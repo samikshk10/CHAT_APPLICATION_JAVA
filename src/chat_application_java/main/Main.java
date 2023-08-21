@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package chat.main;
+package chat_application_java.main;
 
 import chat.swing.ComponentResizer;
 import java.awt.Dimension;

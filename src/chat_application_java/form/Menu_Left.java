@@ -13,13 +13,13 @@ public class Menu_Left extends javax.swing.JPanel {
     }
     
     private void init() {
-        menuList.setLayout(new MigLayout("fillx", "0[]0", "1[]1"));
+        menuList.setLayout(new MigLayout("fillx", "0[]0", "0[]0"));
         showPeople(); 
     }
     
     private void showPeople() {
         // testing
-        for(int i = 0; i<8; i++){
+        for(int i = 0; i<20; i++){
             menuList.add(new Item_People("People " + i), "wrap");
         }
     }

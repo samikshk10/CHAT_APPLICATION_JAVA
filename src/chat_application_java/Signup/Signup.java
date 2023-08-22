@@ -289,11 +289,18 @@ public class Signup extends javax.swing.JFrame {
         String lname = lastname.getText();
         String emails = email.getText();
         String passwords= String.valueOf( password.getPassword());
+        String cpasswords = String.valueOf(cpassword.getPassword());
         
         System.out.println(passwords);
-        if(fname.isEmpty() || lname.isEmpty() || emails.isEmpty() ||  passwords.isEmpty())
+        if(fname.isEmpty() || lname.isEmpty() || emails.isEmpty() ||  passwords.isEmpty() || cpasswords.isEmpty())
         {
-            JOptionPane.showMessageDialog(this, "usernmae and password should not be empty","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The field should not be empty","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else if(!passwords.equals(cpasswords))
+        {
+                        JOptionPane.showMessageDialog(this, "The confirmation password doesnt match","Error",JOptionPane.ERROR_MESSAGE);
+
         }
         else
         {
@@ -417,7 +424,8 @@ public class Signup extends javax.swing.JFrame {
         }
         else
         {
-            System.out.println("datbase is not connected");
+                        JOptionPane.showMessageDialog(this, "Database is not connected","Error",JOptionPane.ERROR_MESSAGE);
+
         }
             
     }

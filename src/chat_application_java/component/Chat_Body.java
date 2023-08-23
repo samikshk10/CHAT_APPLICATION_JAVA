@@ -12,7 +12,7 @@ public class Chat_Body extends javax.swing.JPanel {
     public Chat_Body() {
         initComponents();
         init(); 
-        addItemLeft("rohan");
+        addItemLeft("rohan rana magar");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
         addItemLeft("rohan");

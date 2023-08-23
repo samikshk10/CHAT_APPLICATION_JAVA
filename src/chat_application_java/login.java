@@ -35,7 +35,7 @@ public class login extends javax.swing.JFrame {
         conn = new DBConnection();
         if(conn== null)
         {
-            JOptionPane.showMessageDialog(this, "DB connection not available","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "DB connection not availablesss","Error", JOptionPane.ERROR_MESSAGE);
         }
         
           

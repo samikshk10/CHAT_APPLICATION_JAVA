@@ -62,7 +62,6 @@ local.properties
 .loadpath
 .factorypath
 
-##############################
 ## NetBeans
 ##############################
 nbproject/private/

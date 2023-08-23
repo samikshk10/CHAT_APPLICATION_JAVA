@@ -11,7 +11,8 @@ import java.sql.*;
  */
 public class DBConnection {
     
-  public  static final String DB_url = "jdbc:mysql://localhost/chat";
+//  public  static final String DB_url = "jdbc:mysql://localhost/chat"; samik
+  public  static final String DB_url = "jdbc:mysql://localhost:3307/chat";
   public  static final String username= "root";
    public static final String password = "";
     public static Connection connectDB(){

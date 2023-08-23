@@ -1,27 +1,20 @@
-
-package chat_application_java.form;
-
-import net.miginfocom.swing.MigLayout;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package chat_application_java.component;
 
 /**
  *
  * @author mgrro
  */
-public class Home extends javax.swing.JLayeredPane {
+public class Chat_Title extends javax.swing.JPanel {
 
     /**
-     * Creates new form Home
+     * Creates new form Chat_Title
      */
-    public Home() {
+    public Chat_Title() {
         initComponents();
-        init();  
-    }
-    
-    private void init() {
-        setLayout(new MigLayout("fillx, filly", "0[200!]5[fill, 100%]5[200!]0", "0[fill]0"));
-        this.add(new Menu_Left());
-        this.add(new Chat());
-        this.add(new Menu_Right());
     }
 
     /**
@@ -37,11 +30,11 @@ public class Home extends javax.swing.JLayeredPane {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

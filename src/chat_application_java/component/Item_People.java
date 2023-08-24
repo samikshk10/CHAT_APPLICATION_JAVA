@@ -1,14 +1,34 @@
 
 package chat_application_java.component;
 
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 public class Item_People extends javax.swing.JPanel {
 
     public Item_People(String name) {
         initComponents();
         lb.setText(name);
+        init(); 
+        setBackground(new Color(242, 242, 242));
     }
     
+    private void init() {
+        
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                setBackground(new Color(230, 230, 230));
+            }
+            
+            @Override 
+            public void mouseExited(MouseEvent me) {
+                setBackground(new Color(242, 242, 242));
+            }
+        });
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -16,8 +36,6 @@ public class Item_People extends javax.swing.JPanel {
 
         imageAvatar1 = new chat_application_java.swing.ImageAvatar();
         lb = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(249, 249, 249));
 
         imageAvatar1.setBackground(new java.awt.Color(242, 242, 242));
         imageAvatar1.setBorderSize(0);

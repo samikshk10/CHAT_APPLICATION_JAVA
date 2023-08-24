@@ -69,10 +69,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="body" alignment="0" max="32767" attributes="0"/>
                   <Component id="title" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="home1" pref="931" max="32767" attributes="0"/>
+                      <Component id="menu_Left1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="chat1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="menu_Right1" min="-2" pref="201" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -80,9 +84,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="title" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="home1" min="-2" pref="514" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="chat1" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="menu_Left1" alignment="1" pref="517" max="32767" attributes="0"/>
+                          <Component id="menu_Right1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="body" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -166,7 +177,11 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
             </Container>
-            <Component class="chat_application_java.form.Home" name="home1">
+            <Component class="chat_application_java.form.Chat" name="chat1">
+            </Component>
+            <Component class="chat_application_java.form.Menu_Left" name="menu_Left1">
+            </Component>
+            <Component class="chat_application_java.form.Menu_Right" name="menu_Right1">
             </Component>
           </SubComponents>
         </Container>

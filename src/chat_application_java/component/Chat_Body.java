@@ -12,30 +12,23 @@ public class Chat_Body extends javax.swing.JPanel {
     public Chat_Body() {
         initComponents();
         init(); 
-        addItemLeft("rohan rana magar");
+        addItemLeft("rohan","Rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
-        addItemLeft("rohan");
+        addItemLeft("rohan", "rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
-        addItemLeft("rohan");
+        addItemLeft("rohan", "Rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
-        addItemLeft("rohan");
+        addItemLeft("rohan","Rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
-        addItemLeft("rohan");
+        addItemLeft("roshan", "Rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
-        addItemLeft("rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
-    
-        addItemLeft("roshan");
-        addItemLeft("rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
-    
-        addItemLeft("rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
+        addItemLeft("rohan", "Rohan");
+        addItemLeft("false, the lines will be wrapped at character boundaries. false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord() By default this property is false. Parameters: word word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()", "Rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
     }
@@ -46,9 +39,10 @@ public class Chat_Body extends javax.swing.JPanel {
         sp.getVerticalScrollBar().setBackground(Color.WHITE);
     }
     
-    public void addItemLeft(String text) {
-        Chat_Left item = new Chat_Left(); 
+    public void addItemLeft(String text, String user) {
+        Chat_Left_With_Profile item = new Chat_Left_With_Profile(); 
         item.setText(text); 
+        item.setUserProfile(user); 
         body.add(item, "wrap, w ::80%");
         // w::80% setting max width to 80%;
         body.repaint(); 

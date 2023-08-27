@@ -1,9 +1,12 @@
 
 package chat_application_java.component;
 
+import chat_application_java.Chat_Date;
 import chat_application_java.swing.ScrollBar;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
 import net.miginfocom.swing.MigLayout;
 
@@ -12,24 +15,27 @@ public class Chat_Body extends javax.swing.JPanel {
     public Chat_Body() {
         initComponents();
         init(); 
-        addItemLeft("rohan","Rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
+        addItemLeft("rohan","Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")),new ImageIcon(getClass().getResource("/icon/testing/pic.jpg")));
+        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")),new ImageIcon(getClass().getResource("/icon/testing/pic.jpg")));
     
-        addItemLeft("rohan", "rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
+        addItemLeft("rohan", "rohan",new ImageIcon(getClass().getResource("/icon/testing/pic.jpg")));
+        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
     
-        addItemLeft("rohan", "Rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
+        addDate("05/05/2021");
+        addItemLeft("rohan", "Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
+        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
     
-        addItemLeft("rohan","Rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
+                addDate("05/05/2021");
+
+        addItemLeft("rohan","Rohan", new ImageIcon(getClass().getResource("/icon/testing/pic.jpg")));
+        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
     
-        addItemLeft("roshan", "Rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
+        addItemLeft("roshan", "Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
+        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
     
-        addItemLeft("rohan", "Rohan");
-        addItemLeft("false, the lines will be wrapped at character boundaries. false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord() By default this property is false. Parameters: word word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()", "Rohan");
-        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
+        addItemLeft("rohan", "Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
+        addItemLeft("false, the lines will be wrapped at character boundaries. false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord() By default this property is false. Parameters: word word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()", "Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
+        addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
     
     }
     
@@ -39,24 +45,37 @@ public class Chat_Body extends javax.swing.JPanel {
         sp.getVerticalScrollBar().setBackground(Color.WHITE);
     }
     
-    public void addItemLeft(String text, String user) {
+    public void addItemLeft(String text, String user,Icon ...image) {
         Chat_Left_With_Profile item = new Chat_Left_With_Profile(); 
         item.setText(text); 
+        item.setImage(image);
+        item.setTime();
         item.setUserProfile(user); 
-        body.add(item, "wrap, w ::80%");
+        body.add(item, "wrap, w 100::80%");
         // w::80% setting max width to 80%;
         body.repaint(); 
         body.revalidate(); 
     }
-    public void addItemRight(String text) {
+    public void addItemRight(String text,Icon ...image) {
         Chat_Right item = new Chat_Right(); 
         item.setText(text); 
-        body.add(item, "wrap, al right, w ::80%");
+        item.setImage(image);
+    
+        body.add(item, "wrap, al right, w 100::80%");
         // w::80% setting max width to 80%;
         body.repaint(); 
         body.revalidate(); 
     }
 
+    public void addDate(String date)
+    {
+        Chat_Date item = new Chat_Date();
+        
+        item.setDate(date);
+        body.add(item,"wrap,al center");
+           body.repaint(); 
+        body.revalidate(); 
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

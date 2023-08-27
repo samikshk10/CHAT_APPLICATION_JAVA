@@ -1,6 +1,7 @@
 
 package chat_application_java.component;
 
+import chat_application_java.Chat_Date;
 import chat_application_java.swing.ScrollBar;
 import java.awt.Color;
 import javax.swing.BorderFactory;
@@ -18,9 +19,12 @@ public class Chat_Body extends javax.swing.JPanel {
         addItemLeft("rohan", "rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
+        addDate("05/05/2021");
         addItemLeft("rohan", "Rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
+                addDate("05/05/2021");
+
         addItemLeft("rohan","Rohan");
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()");
     
@@ -43,7 +47,7 @@ public class Chat_Body extends javax.swing.JPanel {
         Chat_Left_With_Profile item = new Chat_Left_With_Profile(); 
         item.setText(text); 
         item.setUserProfile(user); 
-        body.add(item, "wrap, w ::80%");
+        body.add(item, "wrap, w 100::80%");
         // w::80% setting max width to 80%;
         body.repaint(); 
         body.revalidate(); 
@@ -51,12 +55,20 @@ public class Chat_Body extends javax.swing.JPanel {
     public void addItemRight(String text) {
         Chat_Right item = new Chat_Right(); 
         item.setText(text); 
-        body.add(item, "wrap, al right, w ::80%");
+        body.add(item, "wrap, al right, w 100::80%");
         // w::80% setting max width to 80%;
         body.repaint(); 
         body.revalidate(); 
     }
 
+    public void addDate(String date)
+    {
+        Chat_Date item = new Chat_Date();
+        item.setDate(date);
+        body.add(item,"wrap,al center");
+           body.repaint(); 
+        body.revalidate(); 
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

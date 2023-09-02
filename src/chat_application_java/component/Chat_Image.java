@@ -28,6 +28,17 @@ public class Chat_Image extends javax.swing.JLayeredPane {
         }
     }
     
+        public void addImage(String... images) {
+        for (String image : images) {
+            Image_Item pic = new Image_Item();
+//           pic.setPreferedSize(new Dimension(200,200));  // this is not supported upto now
+            pic.setImage(image);
+//            addEvent(pic, image); 
+            add(pic, "wrap");
+        }
+    }
+    
+    
     public void addEvent(Component com, Icon image) {
         com.setCursor(new Cursor(Cursor.HAND_CURSOR));
         com.addMouseListener(new MouseAdapter() {

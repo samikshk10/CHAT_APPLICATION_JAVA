@@ -22,7 +22,9 @@ public class Chat_Body extends javax.swing.JPanel {
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
     
         addDate("05/05/2021");
-        addItemLeft("rohan", "Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
+        
+           String img[] = {"LRMj,K-:?G9G_JIon}WqD~ITRPs,", "LCGlO@00.R~o.9DOO[%L02?aJ7D*"};
+        addItemLeft("rohan", "Rohan",img);
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
     
                 addDate("05/05/2021");
@@ -36,8 +38,11 @@ public class Chat_Body extends javax.swing.JPanel {
         addItemLeft("rohan", "Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
         addItemLeft("false, the lines will be wrapped at character boundaries. false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord() By default this property is false. Parameters: word word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()", "Rohan",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
         addItemRight("false, the lines will be wrapped at character boundaries. By default this property is false. Parameters: word - indicates if word boundaries should be used for line wrapping See Also: getWrapStyleWord()",new ImageIcon(getClass().getResource("/icon/testing/dog.jpg")));
-    
+        addItemFile("myFile","Samik","my doc.pdf","1 MB");
+        addItemFileRight("this is my file","myfile.rar", "15 MB");
     }
+    
+    
     
     private void init(){
         body.setLayout(new MigLayout("fillx", "", "6[]6"));
@@ -56,11 +61,46 @@ public class Chat_Body extends javax.swing.JPanel {
         body.repaint(); 
         body.revalidate(); 
     }
+    
+        public void addItemLeft(String text, String user,String[] image) {
+        Chat_Left_With_Profile item = new Chat_Left_With_Profile(); 
+        item.setText(text); 
+        item.setImage(image);
+        item.setTime();
+        item.setUserProfile(user); 
+        body.add(item, "wrap, w 100::80%");
+        // w::80% setting max width to 80%;
+        body.repaint(); 
+        body.revalidate(); 
+    }
+              public void addItemFile(String text, String user, String fileName, String fileSize) {
+        Chat_Left_With_Profile item = new Chat_Left_With_Profile(); 
+        item.setText(text); 
+        item.setFile(fileName, fileSize);
+        item.setTime();
+        item.setUserProfile(user); 
+        body.add(item, "wrap, w 100::80%");
+        // w::80% setting max width to 80%;
+        body.repaint(); 
+        body.revalidate(); 
+    }
+        
     public void addItemRight(String text,Icon ...image) {
         Chat_Right item = new Chat_Right(); 
         item.setText(text); 
         item.setImage(image);
     
+        body.add(item, "wrap, al right, w 100::80%");
+        // w::80% setting max width to 80%;
+        body.repaint(); 
+        body.revalidate(); 
+    }
+    
+      public void addItemFileRight(String text, String fileName, String fileSize) {
+        Chat_Right item = new Chat_Right(); 
+        item.setText(text);
+        item.setFile(fileName, fileSize);
+
         body.add(item, "wrap, al right, w 100::80%");
         // w::80% setting max width to 80%;
         body.repaint(); 

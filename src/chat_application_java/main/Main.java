@@ -31,7 +31,7 @@ public class Main extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/icon/icon.png")).getImage());
         ComponentResizer comp = new ComponentResizer();
         comp.registerComponent(this); 
-        comp.setMinimumSize(new Dimension(800, 400));
+        comp.setMinimumSize(new Dimension(900, 500));
         comp.setMaximumSize(Toolkit.getDefaultToolkit().getScreenSize());
         comp.setSnapSize(new Dimension(10, 10));
         view_Image.setVisible(false); 

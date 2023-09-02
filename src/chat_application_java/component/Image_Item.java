@@ -1,7 +1,6 @@
 package chat_application_java.component;
 
 import chat_application_java.swing.blurHash.BlurHash;
-import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,6 +30,7 @@ public class Image_Item extends javax.swing.JLayeredPane {
 
         progress1.setForeground(new java.awt.Color(255, 255, 255));
         progress1.setValue(50);
+        progress1.setProgressType(chat_application_java.swing.Progress.ProgressType.CANCEL);
 
         pic.setLayer(progress1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -51,6 +51,8 @@ public class Image_Item extends javax.swing.JLayeredPane {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
+        setLayer(pic, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,8 +70,4 @@ public class Image_Item extends javax.swing.JLayeredPane {
     private chat_application_java.swing.PictureBox pic;
     private chat_application_java.swing.Progress progress1;
     // End of variables declaration//GEN-END:variables
-
-    void setPreferedSize(Dimension dimension) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

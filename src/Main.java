@@ -313,7 +313,8 @@ public class Main extends JFrame {
 			else p1score.setText(String.valueOf(playerposition[player-1]));	    //churi korte jate na psros tai score show koira ditese
 		}
 		
-		else if(player==2){
+//		else if(player==2){
+			else {
 
 			 if(playerposition[player-1]==100 && winingPosition==4) p2score.setText("Looser HaHA! ");
 			 else if(playerposition[player-1]==100) p2score.setText("Winner "+winingPosition);
@@ -322,22 +323,22 @@ public class Main extends JFrame {
 		
 			
 		}
-		else if(player==3){
-
-			 if (playerposition[player-1]==100 && winingPosition==4) p3score.setText("Looser HaHA ");
-			 else if(playerposition[player-1]==100) p3score.setText("Winner "+winingPosition);
-				else 
-				p3score.setText(String.valueOf(playerposition[player-1]));	 	//score show
-		
-			
-		}
-		else if(player==4){
-
-			 if (playerposition[player-1]==100 && winingPosition==4) p4score.setText("Looser HaHA ");
-			 else if(playerposition[player-1]==100) p4score.setText("Winner "+winingPosition);
-				else 
-				p4score.setText(String.valueOf(playerposition[player-1]));	 	//score show
-		}
+//		else if(player==3){
+//
+//			 if (playerposition[player-1]==100 && winingPosition==4) p3score.setText("Looser HaHA ");
+//			 else if(playerposition[player-1]==100) p3score.setText("Winner "+winingPosition);
+//				else
+//				p3score.setText(String.valueOf(playerposition[player-1]));	 	//score show
+//
+//
+//		}
+//		else if(player==4){
+//
+//			 if (playerposition[player-1]==100 && winingPosition==4) p4score.setText("Looser HaHA ");
+//			 else if(playerposition[player-1]==100) p4score.setText("Winner "+winingPosition);
+//				else
+//				p4score.setText(String.valueOf(playerposition[player-1]));	 	//score show
+//		}
 		}
 
 	}
@@ -349,7 +350,7 @@ public class Main extends JFrame {
 
 	public void PositionCheck(int x){         //dhor dui jon ek ghor e gese.. ek jon bair hoia jawar shomoy jate arekjon na bair hoia jaite pare
 
-		for(int i=0; i<4; i++){
+		for(int i=0; i<2; i++){ /// changed from 4 to 2;
 			if(playerposition[i] == x && playerposition[i] != 0 && player != i+1){
 				SetImage(x, i+1);
 				JOptionPane.showMessageDialog(null	, "Player matched with player "+String.valueOf(i+1));
@@ -1209,7 +1210,7 @@ public class Main extends JFrame {
 	public void initialize(){    //game board er label, ghorer label and other label gula shob initialize kortesi
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1020, 720);
+		setBounds(100, 100, 1200, 720);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -1619,7 +1620,7 @@ public class Main extends JFrame {
 		 lblPlayerName = new JLabel("Playing Player -");
 		 lblPlayerName.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		 lblPlayerName.setForeground(new Color(51, 204, 204));
-		lblPlayerName.setBounds(724, 67, 132, 26);
+		lblPlayerName.setBounds(724, 67, 200, 26);
 		contentPane.add(lblPlayerName);
 
 		 btnDice = new JButton("Roll Dice");
@@ -1646,8 +1647,8 @@ public class Main extends JFrame {
 		 		}
 		 		
 		 		//--------current player number show-------//
-		 		if(player==4)lblPlayer.setText(String.valueOf(1));
-		 		else lblPlayer.setText(String.valueOf(player+1));
+		 		if(player==2)lblPlayer.setText(String.valueOf(1)); // changed
+		 		else lblPlayer.setText(String.valueOf(2));
 		 		
 		 		//---------------------------------------------//
 		 		}
@@ -1655,7 +1656,7 @@ public class Main extends JFrame {
 		 		if(chokka==0)
 		 		{
 		 			player++;                    //1jon dice click korlo... then arekjon dice click korbe
-		 		    if(player==5)player=1; 
+		 		    if(player==3)player=1; // changed from 5 to 3;
 		 		}// karon amr game e 4jon player taai.. :/ :/
 
 		 	}
@@ -1679,7 +1680,7 @@ public class Main extends JFrame {
 		lblP1 = new JLabel("Player1-");
 		lblP1.setForeground(new Color(0, 204, 255));
 		lblP1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblP1.setBounds(718, 323, 69, 26);
+		lblP1.setBounds(718, 323, 100, 26);
 		contentPane.add(lblP1);
 
 		lblDimage = new JLabel(".");
@@ -1697,7 +1698,7 @@ public class Main extends JFrame {
         lblP2 = new JLabel("Player2-");
         lblP2.setFont(new Font("Tahoma", Font.BOLD, 16));
         lblP2.setForeground(new Color(255, 204, 0));
-        lblP2.setBounds(718, 389, 69, 14);
+        lblP2.setBounds(718, 389, 100, 14);
         contentPane.add(lblP2);
 
         p2score = new JLabel("Score");
@@ -1713,32 +1714,32 @@ public class Main extends JFrame {
 
         lblBoard.setIcon(new ImageIcon(Main.class.getResource("/Image/Board Small 600 600.png")));
 
-        lblP3 = new JLabel("Player3-");
-        lblP3.setFont(new Font("Tahoma", Font.BOLD, 16));
-        lblP3.setForeground(new Color(255, 51, 102));
-        lblP3.setBounds(718, 437, 69, 26);
-        contentPane.add(lblP3);
+//        lblP3 = new JLabel("Player3-");
+//        lblP3.setFont(new Font("Tahoma", Font.BOLD, 16));
+//        lblP3.setForeground(new Color(255, 51, 102));
+//        lblP3.setBounds(718, 437, 69, 26);
+//        contentPane.add(lblP3);
+//
+//        p3score = new JLabel("Score");
+//        p3score.setHorizontalAlignment(SwingConstants.LEFT);
+//        p3score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+//        p3score.setForeground(new Color(255, 255, 255));
+//        p3score.setBounds(790, 443, 84, 14);
+//        contentPane.add(p3score);
 
-        p3score = new JLabel("Score");
-        p3score.setHorizontalAlignment(SwingConstants.LEFT);
-        p3score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-        p3score.setForeground(new Color(255, 255, 255));
-        p3score.setBounds(790, 443, 84, 14);
-        contentPane.add(p3score);
-
-        lblP4 = new JLabel("Player4-");
-        lblP4.setForeground(new Color(204, 51, 204));
-        lblP4.setFont(new Font("Tahoma", Font.BOLD, 16));
-        lblP4.setHorizontalAlignment(SwingConstants.CENTER);
-        lblP4.setBounds(718, 499, 69, 14);
-        contentPane.add(lblP4);
-
-        p4score = new JLabel("Score");
-        p4score.setHorizontalAlignment(SwingConstants.LEFT);
-        p4score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-        p4score.setForeground(new Color(255, 255, 255));
-        p4score.setBounds(790, 499, 84, 14);
-        contentPane.add(p4score);
+//        lblP4 = new JLabel("Player4-");
+//        lblP4.setForeground(new Color(204, 51, 204));
+//        lblP4.setFont(new Font("Tahoma", Font.BOLD, 16));
+//        lblP4.setHorizontalAlignment(SwingConstants.CENTER);
+//        lblP4.setBounds(718, 499, 69, 14);
+//        contentPane.add(lblP4);
+//
+//        p4score = new JLabel("Score");
+//        p4score.setHorizontalAlignment(SwingConstants.LEFT);
+//        p4score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+//        p4score.setForeground(new Color(255, 255, 255));
+//        p4score.setBounds(790, 499, 84, 14);
+//        contentPane.add(p4score);
 
         lblPlayer = new JLabel("1");
         lblPlayer.setHorizontalAlignment(SwingConstants.LEFT);
@@ -1757,15 +1758,15 @@ public class Main extends JFrame {
         label.setBounds(884, 367, 50, 50);
         contentPane.add(label);
 
-        label_1 = new JLabel("");
-        label_1.setIcon(new ImageIcon(Main.class.getResource("/Image/player 3.png")));
-        label_1.setBounds(884, 429, 50, 50);
-        contentPane.add(label_1);
-
-        label_2 = new JLabel("");
-        label_2.setIcon(new ImageIcon(Main.class.getResource("/Image/player 4.png")));
-        label_2.setBounds(884, 490, 50, 50);
-        contentPane.add(label_2);
+//        label_1 = new JLabel("");
+//        label_1.setIcon(new ImageIcon(Main.class.getResource("/Image/player 3.png")));
+//        label_1.setBounds(884, 429, 50, 50);
+//        contentPane.add(label_1);
+//
+//        label_2 = new JLabel("");
+//        label_2.setIcon(new ImageIcon(Main.class.getResource("/Image/player 4.png")));
+//        label_2.setBounds(884, 490, 50, 50);
+//        contentPane.add(label_2);
 
 
 
@@ -1789,7 +1790,7 @@ public class Main extends JFrame {
 
 
 
-        for(int i=0;i<4;i++){
+        for(int i=0;i<2;i++){ // changed from 4 t0 2;
         	playerposition[i]=0;
         }
 	}

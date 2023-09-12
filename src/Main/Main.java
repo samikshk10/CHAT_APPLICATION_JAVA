@@ -1,15 +1,15 @@
-import java.awt.BorderLayout;
+package Main;
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.io.File;
+import java.util.Arrays;
 import java.util.Random;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.Line;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 
@@ -30,9 +30,9 @@ import javax.swing.JComponent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import java.awt.Color;
+import utils.imageSetter;
 
 public class Main extends JFrame {
 	private JPanel contentPane;
@@ -41,111 +41,113 @@ public class Main extends JFrame {
 	private JLabel lblP1;
 	private JButton btnDice;
 	private JLabel lblPlayerName;
-	private JLabel lbl91;
-	private JLabel lbl92;
-	private JLabel lbl93;
-	private JLabel lbl94;
-	private JLabel lbl95;
-	private JLabel lbl96;
-	private JLabel lbl97;
-	private JLabel lbl98;
-	private JLabel lbl100;
-	private JLabel lbl99;
-	private JLabel lbl90;
-	private JLabel lbl89;
-	private JLabel lbl88;
-	private JLabel lbl87;
-	private JLabel lbl86;
-	private JLabel lbl85;
-	private JLabel lbl84;
-	private JLabel lbl83;
-	private JLabel lbl81;
-	private JLabel lbl82;
-	private JLabel lbl71;
-	private JLabel lbl72;
-	private JLabel lbl73;
-	private JLabel lbl74;
-	private JLabel lbl75;
-	private JLabel lbl76;
-	private JLabel lbl77;
-	private JLabel lbl78;
-	private JLabel lbl80;
-	private JLabel lbl79;
-	private JLabel lbl70;
-	private JLabel lbl69;
-	private JLabel lbl68;
-	private JLabel lbl67;
-	private JLabel lbl66;
-	private JLabel lbl65;
-	private JLabel lbl64;
-	private JLabel lbl63;
-	private JLabel lbl61;
-	private JLabel lbl62;
-	private JLabel lbl51;
-	private JLabel lbl52;
-	private JLabel lbl53;
-	private JLabel lbl54;
-	private JLabel lbl55;
-	private JLabel lbl56;
-	private JLabel lbl57;
-	private JLabel lbl58;
-	private JLabel lbl60;
-	private JLabel lbl59;
-	private JLabel lbl50;
-	private JLabel lbl49;
-	private JLabel lbl48;
-	private JLabel lbl47;
-	private JLabel lbl46;
-	private JLabel lbl45;
-	private JLabel lbl44;
-	private JLabel lbl43;
-	private JLabel lbl41;
-	private JLabel lbl42;
-	private JLabel lbl31;
-	private JLabel lbl32;
-	private JLabel lbl33;
-	private JLabel lbl34;
-	private JLabel lbl35;
-	private JLabel lbl36;
-	private JLabel lbl37;
-	private JLabel lbl38;
-	private JLabel lbl40;
-	private JLabel lbl39;
-	private JLabel lbl30;
-	private JLabel lbl29;
-	private JLabel lbl28;
-	private JLabel lbl27;
-	private JLabel lbl26;
-	private JLabel lbl25;
-	private JLabel lbl24;
-	private JLabel lbl23;
-	private JLabel lbl21;
-	private JLabel lbl22;
-	private JLabel lbl11;
-	private JLabel lbl12;
-	private JLabel lbl13;
-	private JLabel lbl14;
-	private JLabel lbl15;
-	private JLabel lbl16;
-	private JLabel lbl17;
-	private JLabel lbl18;
-	private JLabel lbl20;
-	private JLabel lbl19;
-	private JLabel lbl10;
-	private JLabel lbl9;
-	private JLabel lbl8;
-	private JLabel lbl7;
-	private JLabel lbl6;
-	private JLabel lbl5;
-	private JLabel lbl4;
-	private JLabel lbl3;
-	private JLabel lbl2;
-	private JLabel lbl1;
+	public static JLabel lbl91;
+	public static JLabel lbl92;
+	public static JLabel lbl93;
+	public static JLabel lbl94;
+	public static JLabel lbl95;
+	public static JLabel lbl96;
+	public static JLabel lbl97;
+	public static JLabel lbl98;
+	public static JLabel lbl100;
+	public static JLabel lbl99;
+	public static JLabel lbl90;
+	public static JLabel lbl89;
+	public static JLabel lbl88;
+	public static JLabel lbl87;
+	public static JLabel lbl86;
+	public static JLabel lbl85;
+	public static JLabel lbl84;
+	public static JLabel lbl83;
+	public static JLabel lbl81;
+	public static JLabel lbl82;
+	public static JLabel lbl71;
+	public static JLabel lbl72;
+	public static JLabel lbl73;
+	public static JLabel lbl74;
+	public static JLabel lbl75;
+	public static JLabel lbl76;
+	public static JLabel lbl77;
+	public static JLabel lbl78;
+	public static JLabel lbl80;
+	public static JLabel lbl79;
+	public static JLabel lbl70;
+	public static JLabel lbl69;
+	public static JLabel lbl68;
+	public static JLabel lbl67;
+	public static JLabel lbl66;
+	public static JLabel lbl65;
+	public static JLabel lbl64;
+	public static JLabel lbl63;
+	public static JLabel lbl61;
+	public static JLabel lbl62;
+	public static JLabel lbl51;
+	public static JLabel lbl52;
+	public static JLabel lbl53;
+	public static JLabel lbl54;
+	public static JLabel lbl55;
+	public static JLabel lbl56;
+	public static JLabel lbl57;
+	public static JLabel lbl58;
+	public static JLabel lbl60;
+	public static JLabel lbl59;
+	public static JLabel lbl50;
+	public static JLabel lbl49;
+	public static JLabel lbl48;
+	public static JLabel lbl47;
+	public static JLabel lbl46;
+	public static JLabel lbl45;
+	public static JLabel lbl44;
+	public static JLabel lbl43;
+	public static JLabel lbl41;
+	public static JLabel lbl42;
+	public static JLabel lbl31;
+	public static JLabel lbl32;
+	public static JLabel lbl33;
+	public static JLabel lbl34;
+	public static JLabel lbl35;
+	public static JLabel lbl36;
+	public static JLabel lbl37;
+	public static JLabel lbl38;
+	public static JLabel lbl40;
+	public static JLabel lbl39;
+	public static JLabel lbl30;
+	public static JLabel lbl29;
+	public static JLabel lbl28;
+	public static JLabel lbl27;
+	public static JLabel lbl26;
+	public static JLabel lbl25;
+	public static JLabel lbl24;
+	public static JLabel lbl23;
+	public static JLabel lbl21;
+	public static JLabel lbl22;
+	public static JLabel lbl11;
+	public static JLabel lbl12;
+	public static JLabel lbl13;
+	public static JLabel lbl14;
+	public static JLabel lbl15;
+	public static JLabel lbl16;
+	public static JLabel lbl17;
+	public static JLabel lbl18;
+	public static JLabel lbl20;
+	public static JLabel lbl19;
+	public static JLabel lbl10;
+	public static JLabel lbl9;
+	public static JLabel lbl8;
+	public static JLabel lbl7;
+	public static JLabel lbl6;
+	public static JLabel lbl5;
+	public static JLabel lbl4;
+	public static JLabel lbl3;
+	public static JLabel lbl2;
+	public static JLabel lbl1 = new JLabel("samik");
 	private JLabel p1score;
 	private JLabel lblP2;
 	private JLabel p2score;
 	private JButton btnRestart;
     private int flag1=0,winingPosition=0;
+
+
 
 
 
@@ -173,6 +175,7 @@ public class Main extends JFrame {
 
 
 	public static void main(String[] args) {                    //ekhane dhukar drkr nai :/
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -284,7 +287,7 @@ public class Main extends JFrame {
 		playerposition[player-1]+=point;              //tar ager position er sathe chal e asha man jog kortese
 		//RemoveImage(oldposition);
 
-		SetImage(playerposition[player-1], player);      //jei jei player tar tar position e boshacche, chal e man pawar por
+		imageSetter.SetImage(playerposition[player-1], player, labels);      //jei jei player tar tar position e boshacche, chal e man pawar por
 
 			
 			SkipTest(playerposition[player-1]);    //shap e katse kina ba moi baia upore uthse kina dekhtese
@@ -293,7 +296,7 @@ public class Main extends JFrame {
 		if(playerposition[player-1] != Skipper(playerposition[player-1])){     //jodi shap e kate ba moi paia jay tahole amader ja koroniyo
 			RemoveImage(playerposition[player-1]);
 			playerposition[player-1]=Skipper(playerposition[player-1]);
-			SetImage(playerposition[player-1], player);
+			imageSetter.SetImage(playerposition[player-1], player, labels);
 		}  
         
 		//-------win check//
@@ -352,7 +355,7 @@ public class Main extends JFrame {
 
 		for(int i=0; i<2; i++){ /// changed from 4 to 2;
 			if(playerposition[i] == x && playerposition[i] != 0 && player != i+1){
-				SetImage(x, i+1);
+				imageSetter.SetImage(x, i+1, labels);
 				JOptionPane.showMessageDialog(null	, "Player matched with player "+String.valueOf(i+1));
 			}
 		}
@@ -758,425 +761,7 @@ public class Main extends JFrame {
 
 
 
-	public void SetImage(int x, int pl){   //naam deikkhai bujha jay image set korar jonne eta
-
-
-	    String p=String.valueOf(pl);
-
-		String location = "/Image/player "+p+".png";
-
-
-		if(x == 1){
-			lbl1.setVisible(true);
-			lbl1.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 2){
-			lbl2.setVisible(true);
-			lbl2.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 3){
-			lbl3.setVisible(true);
-			lbl3.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 4){
-			lbl4.setVisible(true);
-			lbl4.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 5){
-			lbl5.setVisible(true);
-			lbl5.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 6){
-			lbl6.setVisible(true);
-			lbl6.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 7){
-			lbl7.setVisible(true);
-			lbl7.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 8){
-			lbl8.setVisible(true);
-			lbl8.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 9){
-			lbl9.setVisible(true);
-			lbl9.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 10){
-			lbl10.setVisible(true);
-			lbl10.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 11){
-			lbl11.setVisible(true);
-			lbl11.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 12){
-			lbl12.setVisible(true);
-			lbl12.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 13){
-			lbl13.setVisible(true);
-			lbl13.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 14){
-			lbl14.setVisible(true);
-			lbl14.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 15){
-			lbl15.setVisible(true);
-			lbl15.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 16){
-			lbl16.setVisible(true);
-			lbl16.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 17){
-			lbl17.setVisible(true);
-			lbl17.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 18){
-			lbl18.setVisible(true);
-			lbl18.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 19){
-			lbl19.setVisible(true);
-			lbl19.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 20){
-			lbl20.setVisible(true);
-			lbl20.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 21){
-			lbl21.setVisible(true);
-			lbl21.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 22){
-			lbl22.setVisible(true);
-			lbl22.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 23){
-			lbl23.setVisible(true);
-			lbl23.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 24){
-			lbl24.setVisible(true);
-			lbl24.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 25){
-			lbl25.setVisible(true);
-			lbl25.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 26){
-			lbl26.setVisible(true);
-			lbl26.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 27){
-			lbl27.setVisible(true);
-			lbl27.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 28){
-			lbl28.setVisible(true);
-			lbl28.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 29){
-			lbl29.setVisible(true);
-			lbl29.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 30){
-			lbl30.setVisible(true);
-			lbl30.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 31){
-			lbl31.setVisible(true);
-			lbl31.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 32){
-			lbl32.setVisible(true);
-			lbl32.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 33){
-			lbl33.setVisible(true);
-			lbl33.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 34){
-			lbl34.setVisible(true);
-			lbl34.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 35){
-			lbl35.setVisible(true);
-			lbl35.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 36){
-			lbl36.setVisible(true);
-			lbl36.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 37){
-			lbl37.setVisible(true);
-			lbl37.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 38){
-			lbl38.setVisible(true);
-			lbl38.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 39){
-			lbl39.setVisible(true);
-			lbl39.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 40){
-			lbl40.setVisible(true);
-			lbl40.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 41){
-			lbl41.setVisible(true);
-			lbl41.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 42){
-			lbl42.setVisible(true);
-			lbl42.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 43){
-			lbl43.setVisible(true);
-			lbl43.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 44){
-			lbl44.setVisible(true);
-			lbl44.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 45){
-			lbl45.setVisible(true);
-			lbl45.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 46){
-			lbl46.setVisible(true);
-			lbl46.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 47){
-			lbl47.setVisible(true);
-			lbl47.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 48){
-			lbl48.setVisible(true);
-			lbl48.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 49){
-			lbl49.setVisible(true);
-			lbl49.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 50){
-			lbl50.setVisible(true);
-			lbl50.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-
-
-		else if(x == 51){
-			lbl51.setVisible(true);
-			lbl51.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 52){
-			lbl52.setVisible(true);
-			lbl52.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 53){
-			lbl53.setVisible(true);
-			lbl53.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 54){
-			lbl54.setVisible(true);
-			lbl54.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 55){
-			lbl55.setVisible(true);
-			lbl55.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 56){
-			lbl56.setVisible(true);
-			lbl56.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 57){
-			lbl57.setVisible(true);
-			lbl57.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 58){
-			lbl58.setVisible(true);
-			lbl58.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 59){
-			lbl59.setVisible(true);
-			lbl59.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 60){
-			lbl60.setVisible(true);
-			lbl60.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-
-		else if(x == 61){
-			lbl61.setVisible(true);
-			lbl61.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 62){
-			lbl62.setVisible(true);
-			lbl62.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 63){
-			lbl63.setVisible(true);
-			lbl63.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 64){
-			lbl64.setVisible(true);
-			lbl64.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 65){
-			lbl65.setVisible(true);
-			lbl65.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 66){
-			lbl66.setVisible(true);
-			lbl66.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 67){
-			lbl67.setVisible(true);
-			lbl67.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 68){
-			lbl68.setVisible(true);
-			lbl68.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 69){
-			lbl69.setVisible(true);
-			lbl69.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 70){
-			lbl70.setVisible(true);
-			lbl70.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-
-		else if(x == 71){
-			lbl71.setVisible(true);
-			lbl71.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 72){
-			lbl72.setVisible(true);
-			lbl72.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 73){
-			lbl73.setVisible(true);
-			lbl73.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 74){
-			lbl74.setVisible(true);
-			lbl74.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 75){
-			lbl75.setVisible(true);
-			lbl75.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 76){
-			lbl76.setVisible(true);
-			lbl76.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 77){
-			lbl77.setVisible(true);
-			lbl77.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 78){
-			lbl78.setVisible(true);
-			lbl78.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 79){
-			lbl79.setVisible(true);
-			lbl79.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 80){
-			lbl80.setVisible(true);
-			lbl80.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-
-		else if(x == 81){
-			lbl81.setVisible(true);
-			lbl81.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 82){
-			lbl82.setVisible(true);
-			lbl82.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 83){
-			lbl83.setVisible(true);
-			lbl83.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 84){
-			lbl84.setVisible(true);
-			lbl84.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 85){
-			lbl85.setVisible(true);
-			lbl85.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 86){
-			lbl86.setVisible(true);
-			lbl86.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 87){
-			lbl87.setVisible(true);
-			lbl87.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 88){
-			lbl88.setVisible(true);
-			lbl88.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 89){
-			lbl89.setVisible(true);
-			lbl89.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 90){
-			lbl90.setVisible(true);
-			lbl90.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-
-		else if(x == 91){
-			lbl91.setVisible(true);
-			lbl91.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 92){
-			lbl92.setVisible(true);
-			lbl92.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 93){
-			lbl93.setVisible(true);
-			lbl93.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 94){
-			lbl94.setVisible(true);
-			lbl94.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 95){
-			lbl95.setVisible(true);
-			lbl95.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 96){
-			lbl96.setVisible(true);
-			lbl96.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 97){
-			lbl97.setVisible(true);
-			lbl97.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 98){
-			lbl98.setVisible(true);
-			lbl98.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 99){
-			lbl99.setVisible(true);
-			lbl99.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-		else if(x == 100){
-			lbl100.setVisible(true);
-			lbl100.setIcon(new ImageIcon(Main.class.getResource(location)));
-		}
-
-		//bug fix er jonne nicher tukun
-		//JOptionPane.showMessageDialog(null, "image set at "+String.valueOf(x)+" for player "+String.valueOf(pl));
-
-	}
+	// setImage
 
 
 	public static void playStaticSound() {
@@ -1206,6 +791,7 @@ public class Main extends JFrame {
 	}
 
 
+	public JLabel[] labels;
 	@SuppressWarnings("serial")
 	public void initialize(){    //game board er label, ghorer label and other label gula shob initialize kortesi
 
@@ -1617,6 +1203,19 @@ public class Main extends JFrame {
 		lbl91.setBounds(630, 38, 60, 60);
 		contentPane.add(lbl91);
 
+		labels = new JLabel[]{
+				lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10,
+				lbl11, lbl12, lbl13, lbl14, lbl15, lbl16, lbl17, lbl18, lbl19, lbl20,
+				lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl27, lbl28, lbl29, lbl30,
+				lbl31, lbl32, lbl33, lbl34, lbl35, lbl36, lbl37, lbl38, lbl39, lbl40,
+				lbl41, lbl42, lbl43, lbl44, lbl45, lbl46, lbl47, lbl48, lbl49, lbl50,
+				lbl51, lbl52, lbl53, lbl54, lbl55, lbl56, lbl57, lbl58, lbl59, lbl60,
+				lbl61, lbl62, lbl63, lbl64, lbl65, lbl66, lbl67, lbl68, lbl69, lbl70,
+				lbl71, lbl72, lbl73, lbl74, lbl75, lbl76, lbl77, lbl78, lbl79, lbl80,
+				lbl81, lbl82, lbl83, lbl84, lbl85, lbl86, lbl87, lbl88, lbl89, lbl90,
+				lbl91, lbl92, lbl93, lbl94, lbl95, lbl96, lbl97, lbl98, lbl99, lbl100
+		};
+
 		 lblPlayerName = new JLabel("Playing Player -");
 		 lblPlayerName.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		 lblPlayerName.setForeground(new Color(51, 204, 204));
@@ -1759,12 +1358,12 @@ public class Main extends JFrame {
         contentPane.add(label);
 
 //        label_1 = new JLabel("");
-//        label_1.setIcon(new ImageIcon(Main.class.getResource("/Image/player 3.png")));
+//        label_1.setIcon(new ImageIcon(Main.Main.class.getResource("/Image/player 3.png")));
 //        label_1.setBounds(884, 429, 50, 50);
 //        contentPane.add(label_1);
 //
 //        label_2 = new JLabel("");
-//        label_2.setIcon(new ImageIcon(Main.class.getResource("/Image/player 4.png")));
+//        label_2.setIcon(new ImageIcon(Main.Main.class.getResource("/Image/player 4.png")));
 //        label_2.setBounds(884, 490, 50, 50);
 //        contentPane.add(label_2);
 

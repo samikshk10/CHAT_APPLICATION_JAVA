@@ -155,7 +155,7 @@ public class Main extends JFrame {
 	private int player=1;    // running player er index.
 	private int[] flag= new int[6];   // flag 1 hoile khela shuru korbe prottek player
 	//private int[] location= new int[2];  // 2jon player er location thakbe.
-	public int[] playerposition= new int[4]; //4jon player er position
+	public int[] playerposition= new int[2]; //4jon player er position
 	private int oldposition;   //player er ager position. karon amk ager position ta muche dite hobe
 	private int point, score=0, f=0;
 	private JLabel lblP3;
@@ -168,7 +168,7 @@ public class Main extends JFrame {
 	private JLabel label_1;
 	private JLabel label_2;
 	private int playerNo;
-	private int chokkarAaagerPosition=0,chokka=0;
+	public static int chokkarAaagerPosition=0,chokka=0;
 	/**
 	 * Launch the application.
 	 */
@@ -197,7 +197,7 @@ public class Main extends JFrame {
 
 
 
-	//point ta Random number create kore return kore. and dice er pic show kore
+
 	public void Dice(){
 		Random rn = new Random();
 
@@ -206,9 +206,9 @@ public class Main extends JFrame {
 
 		String dice = String.valueOf(point);
 		String location = "/Image/dice "+dice+".jpg";
-		lblDimage.setIcon(new ImageIcon(Main.class.getResource(location)));   //player er disk board e boshay
+		lblDimage.setIcon(new ImageIcon(Main.class.getResource(location)));
 
-		if(point==1) flag[player-1]=1;      //gutir chal 1 hoile she khela shuru korte parbe
+		if(point==1) flag[player-1]=1;
 		if(flag[player-1]==1)movedisc();
 		//System.out.println("Dice: "+dice);
 		
@@ -264,7 +264,7 @@ public class Main extends JFrame {
 		//----------------chokka uthle count baraitesi ar na uthle count 0---------//
 		if(point==6)chokka++;
         else chokka=0;
-		
+
 		if(chokka>0)
 		chokkarAaagerPosition=playerposition[player-1];
 		//---------------------------------------//
@@ -306,13 +306,16 @@ public class Main extends JFrame {
 		if(playerposition[player-1] ==100 && flag1==0){   //
 			JOptionPane.showMessageDialog(null, "Player "+player+" won!!");
 			flag1=1;
+//			ActionEvent event = new ActionEvent();
+			restartGame(null,1);
+
 		}
 		//--------//
 		
 		if(player==1){
 			
 			
-			 if(playerposition[player-1]==100 && winingPosition==4) p1score.setText("Looser HaHA ");
+			 if(playerposition[player-1]==100 && winingPosition==2) p1score.setText("Looser HaHA ");
 			 else if(playerposition[player-1]==100) p1score.setText("Winner "+winingPosition);
 			else p1score.setText(String.valueOf(playerposition[player-1]));	    //churi korte jate na psros tai score show koira ditese
 		}
@@ -320,7 +323,7 @@ public class Main extends JFrame {
 //		else if(player==2){
 			else {
 
-			 if(playerposition[player-1]==100 && winingPosition==4) p2score.setText("Looser HaHA! ");
+			 if(playerposition[player-1]==100 && winingPosition==2) p2score.setText("Looser HaHA! ");
 			 else if(playerposition[player-1]==100) p2score.setText("Winner "+winingPosition);
 			else 
 			p2score.setText(String.valueOf(playerposition[player-1]));	 	//score show
@@ -372,7 +375,6 @@ public class Main extends JFrame {
 	public Main() {
 		setTitle("Snake and Ladder");          //constructor
 		FrameinMiddle();
-
         initialize();
 
 
@@ -479,6 +481,7 @@ public class Main extends JFrame {
 
 	public JLabel[] labels;
 	@SuppressWarnings("serial")
+
 	public void initialize(){    //game board er label, ghorer label and other label gula shob initialize kortesi
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -912,12 +915,13 @@ public class Main extends JFrame {
 		 btnDice.setFont(new Font("Comic Sans MS", Font.BOLD, 27));
 		 btnDice.setForeground(new Color(255, 255, 255));
 		 btnDice.setBackground(new Color(0, 0, 51));
+
 		 btnDice.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent e) {
 		 		btnDice.setBackground(new Color(0, 0, 0));
 				playStaticSound();
 		 		if(chokka==0){
-		 		if(winingPosition==4){
+		 		if(winingPosition==2){
 		 			int confirm = JOptionPane.showConfirmDialog(null, "Replay?", "", JOptionPane.YES_NO_OPTION);
 					if(confirm == JOptionPane.YES_OPTION){
 						dispose();
@@ -930,11 +934,23 @@ public class Main extends JFrame {
 						
 					}
 		 		}
-		 		
+
 		 		//--------current player number show-------//
-		 		if(player==2)lblPlayer.setText(String.valueOf(1)); // changed
-		 		else lblPlayer.setText(String.valueOf(2));
-		 		
+//		 		if(player==2)lblPlayer.setText(String.valueOf(1)); // changed
+//		 		else lblPlayer.setText(String.valueOf(2));
+
+				 if(player ==2 ) {
+					 if(chokka > 0) {
+						 lblPlayer.setText(String.valueOf(2));
+					 }
+					 lblPlayer.setText(String.valueOf(1));
+				 } else if(player == 1) {
+					 if(chokka > 0) {
+						 lblPlayer.setText(String.valueOf(1));
+					 }
+					 lblPlayer.setText(String.valueOf(2));
+				 }
+
 		 		//---------------------------------------------//
 		 		}
 		 		Dice();                           //dice method call kortesi
@@ -943,11 +959,14 @@ public class Main extends JFrame {
 		 			player++;                    //1jon dice click korlo... then arekjon dice click korbe
 		 		    if(player==3)player=1; // changed from 5 to 3;
 		 		}// karon amr game e 4jon player taai.. :/ :/
+//				else {
+//					player = (lblPlayer);
+//				}
 
 		 	}
 		 });
 		 btnDice.setBackground(new Color(0, 0, 51));
-		btnDice.setBounds(724, 122, 150, 44);
+		btnDice.setBounds(724, 122, 200, 44);
 		contentPane.add(btnDice);
 
 
@@ -1058,14 +1077,11 @@ public class Main extends JFrame {
         btnRestart = new JButton("Restart??");
         btnRestart.setBackground(new Color(255, 255, 255));
         btnRestart.setFont(new Font("Tahoma", Font.BOLD, 18));
+
+
         btnRestart.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		int confirm = JOptionPane.showConfirmDialog(null, "Do you want to Restart?", "Restart!!!", JOptionPane.YES_NO_OPTION);
-				if(confirm == JOptionPane.YES_OPTION){
-					dispose();
-					Main frame = new Main();
-					frame.setVisible(true);
-				}
+        		restartGame(e, 0);
         	}
         });
         btnRestart.setBounds(734, 576, 150, 60);
@@ -1080,6 +1096,20 @@ public class Main extends JFrame {
         }
 	}
 
+	public void restartGame(ActionEvent e, int restart) {
+		if(restart == 1) {
+			dispose();
+			Main frame = new Main();
+			frame.setVisible(true);
+		} else {
+			int confirm = JOptionPane.showConfirmDialog(null, "Do you want to Restart?", "Restart!!!", JOptionPane.YES_NO_OPTION);
+			if(confirm == JOptionPane.YES_OPTION){
+				dispose();
+				Main frame = new Main();
+				frame.setVisible(true);
+			}
+		}
+	}
 	
 	public void FrameinMiddle() {
 

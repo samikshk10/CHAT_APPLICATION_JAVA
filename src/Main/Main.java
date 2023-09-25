@@ -190,6 +190,322 @@ public class Main extends JFrame {
 	}
 
 
+	public void removeImage(int x){
+		//System.out.println("Remove Image at "+ String.valueOf(x));
+		if(x == 1){
+			lbl1.setVisible(false);
+		}
+		else if(x == 2){
+			lbl2.setVisible(false);
+		}
+		else if(x == 3){
+			lbl3.setVisible(false);
+		}
+		else if(x == 4){
+			lbl4.setVisible(false);
+		}
+		else if(x == 5){
+			lbl5.setVisible(false);
+		}
+		else if(x == 6){
+			lbl6.setVisible(false);
+		}
+		else if(x == 7){
+			lbl7.setVisible(false);
+		}
+		else if(x == 8){
+			lbl8.setVisible(false);
+		}
+		else if(x == 9){
+			lbl9.setVisible(false);
+		}
+		else if(x == 10){
+			lbl10.setVisible(false);
+		}
+		else if(x == 11){
+			lbl11.setVisible(false);
+		}
+		else if(x == 12){
+			lbl12.setVisible(false);
+		}
+		else if(x == 13){
+			lbl13.setVisible(false);/////she tonu r style a kotha bole
+		}
+		else if(x == 14){
+			lbl14.setVisible(false);
+		}
+		else if(x == 15){
+			lbl15.setVisible(false);
+		}
+		else if(x == 16){
+			lbl16.setVisible(false);
+		}
+		else if(x == 17){
+			lbl17.setVisible(false);
+		}
+		else if(x == 18){
+			lbl18.setVisible(false);
+		}
+		else if(x == 19){
+			lbl19.setVisible(false);
+		}
+		else if(x == 20){
+			lbl20.setVisible(false);
+		}
+		else if(x == 21){
+			lbl21.setVisible(false);
+		}
+		else if(x == 22){
+			lbl22.setVisible(false);
+		}
+		else if(x == 23){
+			lbl23.setVisible(false);
+		}
+		else if(x == 24){
+			lbl24.setVisible(false);
+		}
+		else if(x == 25){
+			lbl25.setVisible(false);
+		}
+		else if(x == 26){
+			lbl26.setVisible(false);
+		}
+		else if(x == 27){
+			lbl27.setVisible(false);
+		}
+		else if(x == 28){
+			lbl28.setVisible(false);
+		}
+		else if(x == 29){
+			lbl29.setVisible(false);
+		}
+		else if(x == 30){
+			lbl30.setVisible(false);
+		}
+		else if(x == 31){
+			lbl31.setVisible(false);
+		}
+		else if(x == 32){
+			lbl32.setVisible(false);
+		}
+		else if(x == 33){
+			lbl33.setVisible(false);
+		}
+		else if(x == 34){
+			lbl34.setVisible(false);
+		}
+		else if(x == 35){
+			lbl35.setVisible(false);
+		}
+		else if(x == 36){
+			lbl36.setVisible(false);
+		}
+		else if(x == 37){
+			lbl37.setVisible(false);
+		}
+		else if(x == 38){
+			lbl38.setVisible(false);
+		}
+		else if(x == 39){
+			lbl39.setVisible(false);
+		}
+		else if(x == 40){
+			lbl40.setVisible(false);
+		}
+		else if(x == 41){
+			lbl41.setVisible(false);
+		}
+		else if(x == 42){
+			lbl42.setVisible(false);
+		}
+		else if(x == 43){
+			lbl43.setVisible(false);
+		}
+		else if(x == 44){
+			lbl44.setVisible(false);
+		}
+		else if(x == 45){
+			lbl45.setVisible(false);
+		}
+		else if(x == 46){
+			lbl46.setVisible(false);
+		}
+		else if(x == 47){
+			lbl47.setVisible(false);
+		}
+		else if(x == 48){
+			lbl48.setVisible(false);
+		}
+		else if(x == 49){
+			lbl49.setVisible(false);
+		}
+		else if(x == 50){
+			lbl50.setVisible(false);
+		}
+
+
+		else if(x == 51){
+			lbl51.setVisible(false);
+		}
+		else if(x == 52){
+			lbl52.setVisible(false);
+		}
+		else if(x == 53){
+			lbl53.setVisible(false);
+		}
+		else if(x == 54){
+			lbl54.setVisible(false);
+		}
+		else if(x == 55){
+			lbl55.setVisible(false);
+		}
+		else if(x == 56){
+			lbl56.setVisible(false);
+		}
+		else if(x == 57){
+			lbl57.setVisible(false);
+		}
+		else if(x == 58){
+			lbl58.setVisible(false);
+		}
+		else if(x == 59){
+			lbl59.setVisible(false);
+		}
+		else if(x == 60){
+			lbl60.setVisible(false);
+		}
+
+		else if(x == 61){
+			lbl61.setVisible(false);
+		}
+		else if(x == 62){
+			lbl62.setVisible(false);
+		}
+		else if(x == 63){
+			lbl63.setVisible(false);
+		}
+		else if(x == 64){
+			lbl64.setVisible(false);
+		}
+		else if(x == 65){
+			lbl65.setVisible(false);
+		}
+		else if(x == 66){
+			lbl66.setVisible(false);
+		}
+		else if(x == 67){
+			lbl67.setVisible(false);
+		}
+		else if(x == 68){
+			lbl68.setVisible(false);
+		}
+		else if(x == 69){
+			lbl69.setVisible(false);
+		}
+		else if(x == 70){
+			lbl70.setVisible(false);
+		}
+
+		else if(x == 71){
+			lbl71.setVisible(false);
+		}
+		else if(x == 72){
+			lbl72.setVisible(false);
+		}
+		else if(x == 73){
+			lbl73.setVisible(false);
+		}
+		else if(x == 74){
+			lbl74.setVisible(false);
+		}
+		else if(x == 75){
+			lbl75.setVisible(false);
+		}
+		else if(x == 76){
+			lbl76.setVisible(false);
+		}
+		else if(x == 77){
+			lbl77.setVisible(false);
+		}
+		else if(x == 78){
+			lbl78.setVisible(false);
+		}
+		else if(x == 79){
+			lbl79.setVisible(false);
+		}
+		else if(x == 80){
+			lbl80.setVisible(false);
+		}
+
+		else if(x == 81){
+			lbl81.setVisible(false);
+		}
+		else if(x == 82){
+			lbl82.setVisible(false);
+		}
+		else if(x == 83){
+			lbl83.setVisible(false);
+		}
+		else if(x == 84){
+			lbl84.setVisible(false);
+		}
+		else if(x == 85){
+			lbl85.setVisible(false);
+		}
+		else if(x == 86){
+			lbl86.setVisible(false);
+		}
+		else if(x == 87){
+			lbl87.setVisible(false);
+		}
+		else if(x == 88){
+			lbl88.setVisible(false);
+		}
+		else if(x == 89){
+			lbl89.setVisible(false);
+		}
+		else if(x == 90){
+			lbl90.setVisible(false);
+		}
+
+		else if(x == 91){
+			lbl91.setVisible(false);
+		}
+		else if(x == 92){
+			lbl92.setVisible(false);
+		}
+		else if(x == 93){
+			lbl93.setVisible(false);
+		}
+		else if(x == 94){
+			lbl94.setVisible(false);
+		}
+		else if(x == 95){
+			lbl95.setVisible(false);
+		}
+		else if(x == 96){
+			lbl96.setVisible(false);
+		}
+		else if(x == 97){
+			lbl97.setVisible(false);
+		}
+		else if(x == 98){
+			lbl98.setVisible(false);
+		}
+		else if(x == 99){
+			lbl99.setVisible(false);
+		}
+		else if(x == 100){
+			lbl100.setVisible(false);
+		}
+
+
+		PositionCheck(x);   //positionCheck method k call kortesi.. karon same position e koyjon ase chk korar jonne
+
+		//nicher tukun bug fix korte help kore
+		//JOptionPane.showMessageDialog(null, "remove image at "+String.valueOf(x)+" for player "+String.valueOf(player));
+	}
+
 
 	/**
 	 * Create the frame.
@@ -283,8 +599,8 @@ public class Main extends JFrame {
 		
 		else{
 			//Paint(playerposition[player-1],playerposition[player-1]+point);
-			removeImage rimage = new removeImage();
-		rimage.RemoveImage(playerposition[player-1],labels);    //she ekhon notun position e jabe. ager ghor thaikka ore bair kore deye hocche  :(
+//			removeImage rimage = new removeImage();
+		removeImage(playerposition[player-1]);    //she ekhon notun position e jabe. ager ghor thaikka ore bair kore deye hocche  :(
 		playerposition[player-1]+=point;              //tar ager position er sathe chal e asha man jog kortese
 		//RemoveImage(oldposition);
 
@@ -295,7 +611,7 @@ public class Main extends JFrame {
 
 
 		if(playerposition[player-1] != Skipper(playerposition[player-1])){     //jodi shap e kate ba moi paia jay tahole amader ja koroniyo
-			rimage.RemoveImage(playerposition[player-1],labels);
+			removeImage(playerposition[player-1]);
 			playerposition[player-1]=Skipper(playerposition[player-1]);
 			imageSetter.SetImage(playerposition[player-1], player, labels);
 		}  

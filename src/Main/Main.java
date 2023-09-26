@@ -1,10 +1,13 @@
 package Main;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.util.Arrays;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import javax.sound.sampled.AudioInputStream;
@@ -32,8 +35,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.KeyStroke;
 import java.awt.Color;
+
+import DBConnection.DBConnection;
 import utils.imageSetter;
-import utils.removeImage;
 
 public class Main extends JFrame {
 	private JPanel contentPane;
@@ -172,6 +176,9 @@ public class Main extends JFrame {
 	private JLabel label_2;
 	private int playerNo;
 	public static int chokkarAaagerPosition=0,chokka=0;
+
+	public String started_at;
+	public String ended_at;
 	/**
 	 * Launch the application.
 	 */
@@ -630,6 +637,8 @@ public class Main extends JFrame {
 		if(playerposition[player-1] ==100 && flag1==0){   //
 			JOptionPane.showMessageDialog(null, "Player "+player+" won!!");
 			flag1=1;
+			ended_at= getCurrentTime();
+;			storeGameHistory(player);
 //			ActionEvent event = new ActionEvent();
 			restartGame(null,1);
 
@@ -807,8 +816,9 @@ public class Main extends JFrame {
 	public JLabel[] labels;
 	@SuppressWarnings("serial")
 
-	public void initialize(String player1_usernames, String player2_usernames){    //game board er label, ghorer label and other label gula shob initialize kortesi
-		this.player1_username= player1_usernames;
+	public void initiainitialize(String player1_usernames, String player2_usernames){    //game board er label, ghorer label and other label gula shob initialize kortesi
+		started_at = getCurrentTime();
+;		this.player1_username= player1_usernames;
 		this.player2_username= player2_usernames;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1436,6 +1446,87 @@ public class Main extends JFrame {
 				frame.setVisible(true);
 			}
 		}
+	}
+
+	public String getCurrentTime()
+	{
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		return dtf.format(now);
+	}
+
+
+	public void storeGameHistory(int player)
+	{
+		Connection dbconn = DBConnection.connectDB();
+		System.out.println(dbconn);
+		if(dbconn!=null)
+		{
+			try
+			{
+				System.out.println("this is inside try");
+
+				PreparedStatement st=  dbconn.prepareStatement("INSERT INTO gamehistory(player1_name,player2_name,player1_gamestatus,player2_gamestatus) VALUES (?,?,?,?)");
+			System.out.println(player1_username+" "+ player2_username
+
+			);
+				st.setString(1,player1_username);
+				st.setString(2, player2_username);
+
+				st.setString(3,player==1?"win":"lose");
+				st.setString(4,player==2?"win":"lose");
+				int res= st.executeUpdate();
+
+				System.out.println("this is after set string");
+				if (res > 0 ) {
+				JOptionPane.showMessageDialog(this, "THe game history has been saved", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+					PreparedStatement st=  dbconn.prepareStatement("INSERT INTO gamedata(game_history_id,started_at, ended_at) VALUES (?,?,?)");
+					System.out.println(player1_username+" "+ player2_username
+
+					);
+					st.setInt(1,1);
+					st.setString(2, started_at);
+
+					st.setString(3,ended_at);
+					int res1= st.executeUpdate();
+					if(res1>0)
+					{
+						System.out.println("Game data inserted successfully");
+					}
+					else {
+						System.out.println("Game data insert failed>>>>");
+					}
+
+					System.out.println("this is after set string");
+
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(this, "Game history save failed","Error",JOptionPane.ERROR_MESSAGE);
+				}
+
+
+
+			}
+			catch(Exception ex)
+			{
+				System.out.println(ex);
+			}
+			finally{
+				try {
+					dbconn.close(); // Close the database connection
+				} catch (SQLException ex) {
+					System.out.println("Error closing database connection: " + ex.getMessage());
+				}
+			}
+		}
+		else
+		{
+			System.out.println("database here is not connected");
+		}
+		System.out.println("this is inside store Game history");
+
 	}
 	
 	public void FrameinMiddle() {

@@ -65,9 +65,9 @@ public class GameMenu extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
-            Main menu= new Main();
+            UserRegisterPanel urpanel = new UserRegisterPanel();
+            urpanel.userRegisterPanel();
 
-            menu.setVisible(true);
             this.dispose();
 
         } else if (e.getSource() == settingsButton) {

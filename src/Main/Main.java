@@ -175,19 +175,6 @@ public class Main extends JFrame {
 
 
 
-	public static void main(String[] args) {                    //ekhane dhukar drkr nai :/
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Main frame = new Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 
 	public void removeImage(int x){

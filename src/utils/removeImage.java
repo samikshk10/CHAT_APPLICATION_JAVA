@@ -11,7 +11,7 @@ public class removeImage {
                     int index = x - 1; // Adjust x to 0-based index
                     labels[index].setVisible(false);
             }
-                Main main = new Main();
+                Main main = new Main(null,null);
         main.PositionCheck(x);
     }
 }

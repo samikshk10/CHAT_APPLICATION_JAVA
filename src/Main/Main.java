@@ -148,6 +148,9 @@ public class Main extends JFrame {
 	private JButton btnRestart;
     private int flag1=0,winingPosition=0;
 
+    public String player1_username="Player1";
+    public String player2_username="Player2";
+
 
 
 
@@ -173,6 +176,24 @@ public class Main extends JFrame {
 	 * Launch the application.
 	 */
 
+
+
+	public static void main(String[] args) {
+		//ekhane dhukar drkr nai :/
+
+
+
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Main frame = new Main();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+	}
 
 
 
@@ -675,10 +696,11 @@ public class Main extends JFrame {
 
 
 
-	public Main() {
+	public Main(String player1_usernames, String player2_usernames) {
+
 		setTitle("Snake and Ladder");          //constructor
 		FrameinMiddle();
-        initialize();
+        initialize(player1_usernames, player2_usernames);
 
 
 	}
@@ -785,7 +807,9 @@ public class Main extends JFrame {
 	public JLabel[] labels;
 	@SuppressWarnings("serial")
 
-	public void initialize(){    //game board er label, ghorer label and other label gula shob initialize kortesi
+	public void initialize(String player1_usernames, String player2_usernames){    //game board er label, ghorer label and other label gula shob initialize kortesi
+		this.player1_username= player1_usernames;
+		this.player2_username= player2_usernames;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 720);
@@ -1228,7 +1252,7 @@ public class Main extends JFrame {
 		 			int confirm = JOptionPane.showConfirmDialog(null, "Replay?", "", JOptionPane.YES_NO_OPTION);
 					if(confirm == JOptionPane.YES_OPTION){
 						dispose();
-						Main frame = new Main();
+						Main frame = new Main(player1_username, player2_username);
 						frame.setVisible(true);
 					}
 					else{
@@ -1284,7 +1308,7 @@ public class Main extends JFrame {
                 });
 
 
-		lblP1 = new JLabel("Player1-");
+		lblP1 = new JLabel(player1_username);
 		lblP1.setForeground(new Color(0, 204, 255));
 		lblP1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblP1.setBounds(718, 323, 100, 26);
@@ -1302,7 +1326,7 @@ public class Main extends JFrame {
         p1score.setBounds(790, 329, 84, 14);
         contentPane.add(p1score);
 
-        lblP2 = new JLabel("Player2-");
+        lblP2 = new JLabel(player2_username);
         lblP2.setFont(new Font("Tahoma", Font.BOLD, 16));
         lblP2.setForeground(new Color(255, 204, 0));
         lblP2.setBounds(718, 389, 100, 14);
@@ -1402,13 +1426,13 @@ public class Main extends JFrame {
 	public void restartGame(ActionEvent e, int restart) {
 		if(restart == 1) {
 			dispose();
-			Main frame = new Main();
+			Main frame = new Main(player1_username, player2_username);
 			frame.setVisible(true);
 		} else {
 			int confirm = JOptionPane.showConfirmDialog(null, "Do you want to Restart?", "Restart!!!", JOptionPane.YES_NO_OPTION);
 			if(confirm == JOptionPane.YES_OPTION){
 				dispose();
-				Main frame = new Main();
+				Main frame = new Main(player1_username, player2_username);
 				frame.setVisible(true);
 			}
 		}

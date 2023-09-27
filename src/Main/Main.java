@@ -3,6 +3,7 @@ package Main;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.*;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,9 +38,6 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
 import javax.swing.KeyStroke;
 import java.awt.Color;
 
@@ -830,7 +828,18 @@ public class Main extends JFrame {
 ;		this.player1_username= player1_usernames;
 		this.player2_username= player2_usernames;
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				GameMenu menu = new GameMenu();
+				menu.GameMenu();
+				dispose();
+			}
+		});
+
 		setBounds(100, 100, 1200, 720);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 102));

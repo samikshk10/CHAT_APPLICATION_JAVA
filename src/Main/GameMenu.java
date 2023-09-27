@@ -71,7 +71,9 @@ public class GameMenu extends JFrame implements ActionListener {
             this.dispose();
 
         } else if (e.getSource() == settingsButton) {
-            JOptionPane.showMessageDialog(this, "Settings...");
+            GameHistory gh= new GameHistory();
+
+
         } else if (e.getSource() == exitButton) {
             int confirmExit = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
             if (confirmExit == JOptionPane.YES_OPTION) {

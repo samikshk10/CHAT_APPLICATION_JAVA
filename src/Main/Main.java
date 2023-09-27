@@ -3,12 +3,19 @@ package Main;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import java.util.Random;
+
+import java.sql.DriverManager;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -154,6 +161,8 @@ public class Main extends JFrame {
 
     public String player1_username="Player1";
     public String player2_username="Player2";
+
+
 
 
 
@@ -816,7 +825,7 @@ public class Main extends JFrame {
 	public JLabel[] labels;
 	@SuppressWarnings("serial")
 
-	public void initiainitialize(String player1_usernames, String player2_usernames){    //game board er label, ghorer label and other label gula shob initialize kortesi
+	public void initialize(String player1_usernames, String player2_usernames){    //game board er label, ghorer label and other label gula shob initialize kortesi
 		started_at = getCurrentTime();
 ;		this.player1_username= player1_usernames;
 		this.player2_username= player2_usernames;
@@ -1456,79 +1465,74 @@ public class Main extends JFrame {
 	}
 
 
-	public void storeGameHistory(int player)
-	{
+
+
+
+	public void storeGameHistory(int player) {
 		Connection dbconn = DBConnection.connectDB();
+		int generatedID = -1;
+
 		System.out.println(dbconn);
-		if(dbconn!=null)
-		{
-			try
-			{
+		if (dbconn != null) {
+			try {
 				System.out.println("this is inside try");
 
-				PreparedStatement st=  dbconn.prepareStatement("INSERT INTO gamehistory(player1_name,player2_name,player1_gamestatus,player2_gamestatus) VALUES (?,?,?,?)");
-			System.out.println(player1_username+" "+ player2_username
+				System.out.println("the player won is>>>>" +
+						"" +
+						""+ player);
 
-			);
-				st.setString(1,player1_username);
+				PreparedStatement st = dbconn.prepareStatement("INSERT INTO gamehistory(player1_name, player2_name, player1_gamestatus, player2_gamestatus) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+				System.out.println(player1_username + " " + player2_username);
+
+				st.setString(1, player1_username);
 				st.setString(2, player2_username);
+				st.setString(3, player == 1 ? "win" : "lose");
+				st.setString(4, player == 2 ? "win" : "lose");
 
-				st.setString(3,player==1?"win":"lose");
-				st.setString(4,player==2?"win":"lose");
-				int res= st.executeUpdate();
+				int res = st.executeUpdate();
 
 				System.out.println("this is after set string");
-				if (res > 0 ) {
-				JOptionPane.showMessageDialog(this, "THe game history has been saved", "Success", JOptionPane.INFORMATION_MESSAGE);
+				if (res > 0) {
+					ResultSet generatedKeys = st.getGeneratedKeys();
+					if (generatedKeys.next()) {
+						generatedID = generatedKeys.getInt(1);
+						st = dbconn.prepareStatement("INSERT INTO gamedata(game_history_id, started_at, ended_at) VALUES (?, ?, ?)");
+						System.out.println(player1_username + " " + player2_username);
 
-					PreparedStatement st=  dbconn.prepareStatement("INSERT INTO gamedata(game_history_id,started_at, ended_at) VALUES (?,?,?)");
-					System.out.println(player1_username+" "+ player2_username
-
-					);
-					st.setInt(1,1);
-					st.setString(2, started_at);
-
-					st.setString(3,ended_at);
-					int res1= st.executeUpdate();
-					if(res1>0)
-					{
-						System.out.println("Game data inserted successfully");
+						st.setInt(1, generatedID);
+						st.setString(2, started_at);
+						st.setString(3, ended_at);
+						int res1 = st.executeUpdate();
+						if (res1 > 0) {
+							System.out.println("Game data inserted successfully");
+						} else {
+							System.out.println("Game data insert failed");
+						}
+					} else {
+						System.out.println("Key is not generated");
 					}
-					else {
-						System.out.println("Game data insert failed>>>>");
-					}
-
-					System.out.println("this is after set string");
-
+					generatedKeys.close();
+				} else {
+					JOptionPane.showMessageDialog(this, "Game history save failed", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-				else
-				{
-					JOptionPane.showMessageDialog(this, "Game history save failed","Error",JOptionPane.ERROR_MESSAGE);
-				}
-
-
-
-			}
-			catch(Exception ex)
-			{
+			} catch (Exception ex) {
 				System.out.println(ex);
-			}
-			finally{
+			} finally {
 				try {
 					dbconn.close(); // Close the database connection
 				} catch (SQLException ex) {
 					System.out.println("Error closing database connection: " + ex.getMessage());
 				}
 			}
-		}
-		else
-		{
-			System.out.println("database here is not connected");
+		} else {
+			System.out.println("Database connection is not established");
 		}
 		System.out.println("this is inside store Game history");
-
 	}
-	
+
+
+
+
 	public void FrameinMiddle() {
 
 		Dimension screenSize,frameSize;

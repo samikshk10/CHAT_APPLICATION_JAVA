@@ -1,11 +1,21 @@
 package Main;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.util.Arrays;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import java.util.Random;
+
+import java.sql.DriverManager;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -32,8 +42,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.KeyStroke;
 import java.awt.Color;
+
+import DBConnection.DBConnection;
 import utils.imageSetter;
-import utils.removeImage;
 
 public class Main extends JFrame {
 	private JPanel contentPane;
@@ -148,6 +159,11 @@ public class Main extends JFrame {
 	private JButton btnRestart;
     private int flag1=0,winingPosition=0;
 
+    public String player1_username="Player1";
+    public String player2_username="Player2";
+
+
+
 
 
 
@@ -169,25 +185,33 @@ public class Main extends JFrame {
 	private JLabel label_2;
 	private int playerNo;
 	public static int chokkarAaagerPosition=0,chokka=0;
+
+	public String started_at;
+	public String ended_at;
 	/**
 	 * Launch the application.
 	 */
 
 
 
-	public static void main(String[] args) {                    //ekhane dhukar drkr nai :/
+	public static void main(String[] args) {
+		//ekhane dhukar drkr nai :/
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Main frame = new Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
+
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Main frame = new Main();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
+
+
 
 
 	public void removeImage(int x){
@@ -622,6 +646,8 @@ public class Main extends JFrame {
 		if(playerposition[player-1] ==100 && flag1==0){   //
 			JOptionPane.showMessageDialog(null, "Player "+player+" won!!");
 			flag1=1;
+			ended_at= getCurrentTime();
+;			storeGameHistory(player);
 //			ActionEvent event = new ActionEvent();
 			restartGame(null,1);
 
@@ -688,10 +714,11 @@ public class Main extends JFrame {
 
 
 
-	public Main() {
+	public Main(String player1_usernames, String player2_usernames) {
+
 		setTitle("Snake and Ladder");          //constructor
 		FrameinMiddle();
-        initialize();
+        initialize(player1_usernames, player2_usernames);
 
 
 	}
@@ -798,7 +825,10 @@ public class Main extends JFrame {
 	public JLabel[] labels;
 	@SuppressWarnings("serial")
 
-	public void initialize(){    //game board er label, ghorer label and other label gula shob initialize kortesi
+	public void initialize(String player1_usernames, String player2_usernames){    //game board er label, ghorer label and other label gula shob initialize kortesi
+		started_at = getCurrentTime();
+;		this.player1_username= player1_usernames;
+		this.player2_username= player2_usernames;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 720);
@@ -1241,7 +1271,7 @@ public class Main extends JFrame {
 		 			int confirm = JOptionPane.showConfirmDialog(null, "Replay?", "", JOptionPane.YES_NO_OPTION);
 					if(confirm == JOptionPane.YES_OPTION){
 						dispose();
-						Main frame = new Main();
+						Main frame = new Main(player1_username, player2_username);
 						frame.setVisible(true);
 					}
 					else{
@@ -1297,7 +1327,7 @@ public class Main extends JFrame {
                 });
 
 
-		lblP1 = new JLabel("Player1-");
+		lblP1 = new JLabel(player1_username);
 		lblP1.setForeground(new Color(0, 204, 255));
 		lblP1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblP1.setBounds(718, 323, 100, 26);
@@ -1315,7 +1345,7 @@ public class Main extends JFrame {
         p1score.setBounds(790, 329, 84, 14);
         contentPane.add(p1score);
 
-        lblP2 = new JLabel("Player2-");
+        lblP2 = new JLabel(player2_username);
         lblP2.setFont(new Font("Tahoma", Font.BOLD, 16));
         lblP2.setForeground(new Color(255, 204, 0));
         lblP2.setBounds(718, 389, 100, 14);
@@ -1415,18 +1445,94 @@ public class Main extends JFrame {
 	public void restartGame(ActionEvent e, int restart) {
 		if(restart == 1) {
 			dispose();
-			Main frame = new Main();
+			Main frame = new Main(player1_username, player2_username);
 			frame.setVisible(true);
 		} else {
 			int confirm = JOptionPane.showConfirmDialog(null, "Do you want to Restart?", "Restart!!!", JOptionPane.YES_NO_OPTION);
 			if(confirm == JOptionPane.YES_OPTION){
 				dispose();
-				Main frame = new Main();
+				Main frame = new Main(player1_username, player2_username);
 				frame.setVisible(true);
 			}
 		}
 	}
-	
+
+	public String getCurrentTime()
+	{
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		return dtf.format(now);
+	}
+
+
+
+
+
+	public void storeGameHistory(int player) {
+		Connection dbconn = DBConnection.connectDB();
+		int generatedID = -1;
+
+		System.out.println(dbconn);
+		if (dbconn != null) {
+			try {
+				System.out.println("this is inside try");
+
+				System.out.println("the player won is>>>>" +
+						"" +
+						""+ player);
+
+				PreparedStatement st = dbconn.prepareStatement("INSERT INTO gamehistory(player1_name, player2_name, player1_gamestatus, player2_gamestatus) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+				System.out.println(player1_username + " " + player2_username);
+
+				st.setString(1, player1_username);
+				st.setString(2, player2_username);
+				st.setString(3, player == 1 ? "win" : "lose");
+				st.setString(4, player == 2 ? "win" : "lose");
+
+				int res = st.executeUpdate();
+
+				System.out.println("this is after set string");
+				if (res > 0) {
+					ResultSet generatedKeys = st.getGeneratedKeys();
+					if (generatedKeys.next()) {
+						generatedID = generatedKeys.getInt(1);
+						st = dbconn.prepareStatement("INSERT INTO gamedata(game_history_id, started_at, ended_at) VALUES (?, ?, ?)");
+						System.out.println(player1_username + " " + player2_username);
+
+						st.setInt(1, generatedID);
+						st.setString(2, started_at);
+						st.setString(3, ended_at);
+						int res1 = st.executeUpdate();
+						if (res1 > 0) {
+							System.out.println("Game data inserted successfully");
+						} else {
+							System.out.println("Game data insert failed");
+						}
+					} else {
+						System.out.println("Key is not generated");
+					}
+					generatedKeys.close();
+				} else {
+					JOptionPane.showMessageDialog(this, "Game history save failed", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			} catch (Exception ex) {
+				System.out.println(ex);
+			} finally {
+				try {
+					dbconn.close(); // Close the database connection
+				} catch (SQLException ex) {
+					System.out.println("Error closing database connection: " + ex.getMessage());
+				}
+			}
+		} else {
+			System.out.println("Database connection is not established");
+		}
+		System.out.println("this is inside store Game history");
+	}
+
+
+
+
 	public void FrameinMiddle() {
 
 		Dimension screenSize,frameSize;

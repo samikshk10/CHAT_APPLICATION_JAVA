@@ -170,8 +170,8 @@ public class Main extends JFrame {
 	private int[] flag= new int[6];   // flag 1 hoile khela shuru korbe prottek player
 	//private int[] location= new int[2];  // 2jon player er location thakbe.
 	public int[] playerposition= new int[2]; //4jon player er position
-	private int oldposition;   //player er ager position. karon amk ager position ta muche dite hobe
-	private int point, score=0, f=0;
+	private int oldPosition = -1;   //player er ager position. karon amk ager position ta muche dite hobe
+	private int point;
 	private JLabel lblP3;
 	private JLabel p3score;
 	private JLabel lblP4;
@@ -540,6 +540,7 @@ public class Main extends JFrame {
 		Random rn = new Random();
 
 		point = rn.nextInt(6)+1;
+		oldPosition = point;
 		//point=chokkaTest();
 
 		String dice = String.valueOf(point);
@@ -1274,7 +1275,7 @@ public class Main extends JFrame {
 		 btnDice.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent e) {
 		 		btnDice.setBackground(new Color(0, 0, 0));
-				playStaticSound();
+//				playStaticSound();
 		 		if(chokka==0){
 		 		if(winingPosition==2){
 		 			int confirm = JOptionPane.showConfirmDialog(null, "Replay?", "", JOptionPane.YES_NO_OPTION);
@@ -1290,30 +1291,40 @@ public class Main extends JFrame {
 					}
 		 		}
 
-		 		//--------current player number show-------//
-//		 		if(player==2)lblPlayer.setText(String.valueOf(1)); // changed
-//		 		else lblPlayer.setText(String.valueOf(2));
-
-				 if(player ==2 ) {
-					 if(chokka > 0) {
-						 lblPlayer.setText(String.valueOf(2));
-					 }
-					 lblPlayer.setText(String.valueOf(1));
-				 } else if(player == 1) {
-					 if(chokka > 0) {
-						 lblPlayer.setText(String.valueOf(1));
-					 }
-					 lblPlayer.setText(String.valueOf(2));
-				 }
+					System.out.println(player + "player in Dice()" + oldPosition);
+					//--------current player number show-------//
+					// give chance to player if dice point is 6
+					if(player==2 && oldPosition != 6)lblPlayer.setText(String.valueOf(2)); // changed
+		 		else if(player==1 && oldPosition != 6) lblPlayer.setText(String.valueOf(1));
+//				 if(player ==2 ) {
+//					 if(oldPosition == 6) {
+//						 System.out.println("player 2 " + point + "point");
+//						 lblPlayer.setText(String.valueOf(2));
+//					 } else{
+//						 lblPlayer.setText(String.valueOf(1));
+//						 player = 1;
+//					 }
+//				 } else if(player == 1) {
+//					 if(oldPosition == 6) {
+//						 System.out.println("player 1 " + point + "point");
+//
+//
+//						 lblPlayer.setText(String.valueOf(1));
+//					 } else {
+//						 lblPlayer.setText(String.valueOf(2));
+//						 player = 2;
+//					 }
+//				 }
 
 		 		//---------------------------------------------//
 		 		}
 		 		Dice();                           //dice method call kortesi
-		 		if(chokka==0)
+		 		if(chokka==0 && oldPosition != 6)
 		 		{
 		 			player++;                    //1jon dice click korlo... then arekjon dice click korbe
 		 		    if(player==3)player=1; // changed from 5 to 3;
-		 		}// karon amr game e 4jon player taai.. :/ :/
+		 		}
+				 // karon amr game e 4jon player taai.. :/ :/
 //				else {
 //					player = (lblPlayer);
 //				}

@@ -75,6 +75,7 @@ public class GameHistory {
             JFrame frame = new JFrame("Game History");
             frame.setSize(1000, 700);
 //            frame.setUndecorated(true);
+
             frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 
@@ -86,7 +87,6 @@ public class GameHistory {
                     frame.dispose();
                 }
             });
-
 
             frame.setLocationRelativeTo(null);
             JPanel mainPanel = new JPanel(new BorderLayout());
@@ -177,11 +177,7 @@ public class GameHistory {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     int selectedRow = table.getSelectedRow();
-                    if (selectedRow != -1) {
-                        String name = (String) table.getValueAt(selectedRow, 0);
-                        int age = (int) table.getValueAt(selectedRow, 1);
-                        JOptionPane.showMessageDialog(frame, "Selected: Name = " + name + ", Age = " + age);
-                    }
+
                 }
             });
 

@@ -12,7 +12,7 @@ public class GameMenu extends JFrame implements ActionListener {
     JLabel label = new JLabel();
 
     void GameMenu() {
-        setTitle("Game Menu");
+        setTitle("Snake and Ladder");
         setSize(1000, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -36,17 +36,20 @@ public class GameMenu extends JFrame implements ActionListener {
         startButton.setForeground(Color.WHITE);
         startButton.setFont(new Font("Arial",Font.BOLD,15));
         startButton.setBounds(100,100,200,50);
+        startButton.setFocusable(false);
+
         settingsButton = new JButton("Game History");
         settingsButton.setBounds(100,200,200,50);
+        settingsButton.setFocusable(false);
+
         exitButton = new JButton("Exit Game");
         exitButton.setBounds(100,300,200,50);
+        exitButton.setFocusable(false);
+
         startButton.addActionListener(this);
         settingsButton.addActionListener(this);
         exitButton.addActionListener(this);
-        /*buttonPanel.add(startButton);
-        buttonPanel.add(settingsButton);
-        buttonPanel.add(exitButton);
-        buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);*/
+
         mainPanel.add(startButton);
         mainPanel.add(settingsButton);
         mainPanel.add(exitButton);

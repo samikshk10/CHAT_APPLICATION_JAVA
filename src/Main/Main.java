@@ -841,6 +841,12 @@ public class Main extends JFrame {
 		});
 
 		setBounds(100, 100, 1200, 720);
+		
+		
+		
+		
+
+
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -1270,6 +1276,7 @@ public class Main extends JFrame {
 		 btnDice.setFont(new Font("Comic Sans MS", Font.BOLD, 27));
 		 btnDice.setForeground(new Color(255, 255, 255));
 		 btnDice.setBackground(new Color(0, 0, 51));
+		 btnDice.setFocusable(false);
 
 		 btnDice.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent e) {
@@ -1432,6 +1439,7 @@ public class Main extends JFrame {
         btnRestart = new JButton("Restart??");
         btnRestart.setBackground(new Color(255, 255, 255));
         btnRestart.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnRestart.setFocusable(false);
 
 
         btnRestart.addActionListener(new ActionListener() {

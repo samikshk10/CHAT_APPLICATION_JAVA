@@ -7,12 +7,10 @@ public class GameStart {
 
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
+
                     GameMenu menu = new GameMenu();
                     menu.GameMenu();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
             }
         });
     }

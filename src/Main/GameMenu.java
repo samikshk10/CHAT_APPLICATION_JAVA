@@ -36,7 +36,7 @@ public class GameMenu extends JFrame implements ActionListener {
         startButton.setForeground(Color.WHITE);
         startButton.setFont(new Font("Arial",Font.BOLD,15));
         startButton.setBounds(100,100,200,50);
-        settingsButton = new JButton("Settings");
+        settingsButton = new JButton("Game History");
         settingsButton.setBounds(100,200,200,50);
         exitButton = new JButton("Exit Game");
         exitButton.setBounds(100,300,200,50);
@@ -71,7 +71,12 @@ public class GameMenu extends JFrame implements ActionListener {
             this.dispose();
 
         } else if (e.getSource() == settingsButton) {
-            GameHistory gh= new GameHistory();
+            try {
+                GameHistory gh= new GameHistory();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+            this.dispose();
 
 
         } else if (e.getSource() == exitButton) {

@@ -10,13 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 import java.util.Random;
 
-import java.sql.DriverManager;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -29,8 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-//import com.sun.xml.internal.ws.dump.LoggingDumpTube.Position;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -155,621 +147,386 @@ public class Main extends JFrame {
 	private JLabel lblP2;
 	private JLabel p2score;
 	private JButton btnRestart;
-    private int flag1=0,winingPosition=0;
+	private int flag1 = 0, winingPosition = 0;
 
-    public String player1_username="Player1";
-    public String player2_username="Player2";
+	public String player1_username = "Player1";
+	public String player2_username = "Player2";
 
-
-
-
-
-
-
-	private int player=1;    // running player er index.
-	private int[] flag= new int[6];   // flag 1 hoile khela shuru korbe prottek player
-	//private int[] location= new int[2];  // 2jon player er location thakbe.
-	public int[] playerposition= new int[2]; //4jon player er position
-	private int oldPosition = -1;   //player er ager position. karon amk ager position ta muche dite hobe
+	private int player = 1; // running player index.
+	private int[] flag = new int[6];
+	public int[] playerposition = new int[2];
+	private int oldPosition = -1;
 	private int point;
-	private JLabel lblP3;
-	private JLabel p3score;
-	private JLabel lblP4;
-	private JLabel p4score;
 	private JLabel lblPlayer;
 	private JLabel p1btn;
 	private JLabel label;
-	private JLabel label_1;
-	private JLabel label_2;
-	private int playerNo;
-	public static int chokkarAaagerPosition=0,chokka=0;
+	public static int chokkarAaagerPosition = 0, chokka = 0;
 
 	public String started_at;
 	public String ended_at;
+
 	/**
 	 * Launch the application.
 	 */
 
-
-
-	public static void main(String[] args) {
-		//ekhane dhukar drkr nai :/
-
-
-
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Main frame = new Main();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-	}
-
-
-
-
-	public void removeImage(int x){
-		//System.out.println("Remove Image at "+ String.valueOf(x));
-		if(x == 1){
+	public void removeImage(int x) {
+		if (x == 1) {
 			lbl1.setVisible(false);
-		}
-		else if(x == 2){
+		} else if (x == 2) {
 			lbl2.setVisible(false);
-		}
-		else if(x == 3){
+		} else if (x == 3) {
 			lbl3.setVisible(false);
-		}
-		else if(x == 4){
+		} else if (x == 4) {
 			lbl4.setVisible(false);
-		}
-		else if(x == 5){
+		} else if (x == 5) {
 			lbl5.setVisible(false);
-		}
-		else if(x == 6){
+		} else if (x == 6) {
 			lbl6.setVisible(false);
-		}
-		else if(x == 7){
+		} else if (x == 7) {
 			lbl7.setVisible(false);
-		}
-		else if(x == 8){
+		} else if (x == 8) {
 			lbl8.setVisible(false);
-		}
-		else if(x == 9){
+		} else if (x == 9) {
 			lbl9.setVisible(false);
-		}
-		else if(x == 10){
+		} else if (x == 10) {
 			lbl10.setVisible(false);
-		}
-		else if(x == 11){
+		} else if (x == 11) {
 			lbl11.setVisible(false);
-		}
-		else if(x == 12){
+		} else if (x == 12) {
 			lbl12.setVisible(false);
-		}
-		else if(x == 13){
-			lbl13.setVisible(false);/////she tonu r style a kotha bole
-		}
-		else if(x == 14){
+		} else if (x == 13) {
+			lbl13.setVisible(false);
+		} else if (x == 14) {
 			lbl14.setVisible(false);
-		}
-		else if(x == 15){
+		} else if (x == 15) {
 			lbl15.setVisible(false);
-		}
-		else if(x == 16){
+		} else if (x == 16) {
 			lbl16.setVisible(false);
-		}
-		else if(x == 17){
+		} else if (x == 17) {
 			lbl17.setVisible(false);
-		}
-		else if(x == 18){
+		} else if (x == 18) {
 			lbl18.setVisible(false);
-		}
-		else if(x == 19){
+		} else if (x == 19) {
 			lbl19.setVisible(false);
-		}
-		else if(x == 20){
+		} else if (x == 20) {
 			lbl20.setVisible(false);
-		}
-		else if(x == 21){
+		} else if (x == 21) {
 			lbl21.setVisible(false);
-		}
-		else if(x == 22){
+		} else if (x == 22) {
 			lbl22.setVisible(false);
-		}
-		else if(x == 23){
+		} else if (x == 23) {
 			lbl23.setVisible(false);
-		}
-		else if(x == 24){
+		} else if (x == 24) {
 			lbl24.setVisible(false);
-		}
-		else if(x == 25){
+		} else if (x == 25) {
 			lbl25.setVisible(false);
-		}
-		else if(x == 26){
+		} else if (x == 26) {
 			lbl26.setVisible(false);
-		}
-		else if(x == 27){
+		} else if (x == 27) {
 			lbl27.setVisible(false);
-		}
-		else if(x == 28){
+		} else if (x == 28) {
 			lbl28.setVisible(false);
-		}
-		else if(x == 29){
+		} else if (x == 29) {
 			lbl29.setVisible(false);
-		}
-		else if(x == 30){
+		} else if (x == 30) {
 			lbl30.setVisible(false);
-		}
-		else if(x == 31){
+		} else if (x == 31) {
 			lbl31.setVisible(false);
-		}
-		else if(x == 32){
+		} else if (x == 32) {
 			lbl32.setVisible(false);
-		}
-		else if(x == 33){
+		} else if (x == 33) {
 			lbl33.setVisible(false);
-		}
-		else if(x == 34){
+		} else if (x == 34) {
 			lbl34.setVisible(false);
-		}
-		else if(x == 35){
+		} else if (x == 35) {
 			lbl35.setVisible(false);
-		}
-		else if(x == 36){
+		} else if (x == 36) {
 			lbl36.setVisible(false);
-		}
-		else if(x == 37){
+		} else if (x == 37) {
 			lbl37.setVisible(false);
-		}
-		else if(x == 38){
+		} else if (x == 38) {
 			lbl38.setVisible(false);
-		}
-		else if(x == 39){
+		} else if (x == 39) {
 			lbl39.setVisible(false);
-		}
-		else if(x == 40){
+		} else if (x == 40) {
 			lbl40.setVisible(false);
-		}
-		else if(x == 41){
+		} else if (x == 41) {
 			lbl41.setVisible(false);
-		}
-		else if(x == 42){
+		} else if (x == 42) {
 			lbl42.setVisible(false);
-		}
-		else if(x == 43){
+		} else if (x == 43) {
 			lbl43.setVisible(false);
-		}
-		else if(x == 44){
+		} else if (x == 44) {
 			lbl44.setVisible(false);
-		}
-		else if(x == 45){
+		} else if (x == 45) {
 			lbl45.setVisible(false);
-		}
-		else if(x == 46){
+		} else if (x == 46) {
 			lbl46.setVisible(false);
-		}
-		else if(x == 47){
+		} else if (x == 47) {
 			lbl47.setVisible(false);
-		}
-		else if(x == 48){
+		} else if (x == 48) {
 			lbl48.setVisible(false);
-		}
-		else if(x == 49){
+		} else if (x == 49) {
 			lbl49.setVisible(false);
-		}
-		else if(x == 50){
+		} else if (x == 50) {
 			lbl50.setVisible(false);
 		}
 
-
-		else if(x == 51){
+		else if (x == 51) {
 			lbl51.setVisible(false);
-		}
-		else if(x == 52){
+		} else if (x == 52) {
 			lbl52.setVisible(false);
-		}
-		else if(x == 53){
+		} else if (x == 53) {
 			lbl53.setVisible(false);
-		}
-		else if(x == 54){
+		} else if (x == 54) {
 			lbl54.setVisible(false);
-		}
-		else if(x == 55){
+		} else if (x == 55) {
 			lbl55.setVisible(false);
-		}
-		else if(x == 56){
+		} else if (x == 56) {
 			lbl56.setVisible(false);
-		}
-		else if(x == 57){
+		} else if (x == 57) {
 			lbl57.setVisible(false);
-		}
-		else if(x == 58){
+		} else if (x == 58) {
 			lbl58.setVisible(false);
-		}
-		else if(x == 59){
+		} else if (x == 59) {
 			lbl59.setVisible(false);
-		}
-		else if(x == 60){
+		} else if (x == 60) {
 			lbl60.setVisible(false);
 		}
 
-		else if(x == 61){
+		else if (x == 61) {
 			lbl61.setVisible(false);
-		}
-		else if(x == 62){
+		} else if (x == 62) {
 			lbl62.setVisible(false);
-		}
-		else if(x == 63){
+		} else if (x == 63) {
 			lbl63.setVisible(false);
-		}
-		else if(x == 64){
+		} else if (x == 64) {
 			lbl64.setVisible(false);
-		}
-		else if(x == 65){
+		} else if (x == 65) {
 			lbl65.setVisible(false);
-		}
-		else if(x == 66){
+		} else if (x == 66) {
 			lbl66.setVisible(false);
-		}
-		else if(x == 67){
+		} else if (x == 67) {
 			lbl67.setVisible(false);
-		}
-		else if(x == 68){
+		} else if (x == 68) {
 			lbl68.setVisible(false);
-		}
-		else if(x == 69){
+		} else if (x == 69) {
 			lbl69.setVisible(false);
-		}
-		else if(x == 70){
+		} else if (x == 70) {
 			lbl70.setVisible(false);
 		}
 
-		else if(x == 71){
+		else if (x == 71) {
 			lbl71.setVisible(false);
-		}
-		else if(x == 72){
+		} else if (x == 72) {
 			lbl72.setVisible(false);
-		}
-		else if(x == 73){
+		} else if (x == 73) {
 			lbl73.setVisible(false);
-		}
-		else if(x == 74){
+		} else if (x == 74) {
 			lbl74.setVisible(false);
-		}
-		else if(x == 75){
+		} else if (x == 75) {
 			lbl75.setVisible(false);
-		}
-		else if(x == 76){
+		} else if (x == 76) {
 			lbl76.setVisible(false);
-		}
-		else if(x == 77){
+		} else if (x == 77) {
 			lbl77.setVisible(false);
-		}
-		else if(x == 78){
+		} else if (x == 78) {
 			lbl78.setVisible(false);
-		}
-		else if(x == 79){
+		} else if (x == 79) {
 			lbl79.setVisible(false);
-		}
-		else if(x == 80){
+		} else if (x == 80) {
 			lbl80.setVisible(false);
 		}
 
-		else if(x == 81){
+		else if (x == 81) {
 			lbl81.setVisible(false);
-		}
-		else if(x == 82){
+		} else if (x == 82) {
 			lbl82.setVisible(false);
-		}
-		else if(x == 83){
+		} else if (x == 83) {
 			lbl83.setVisible(false);
-		}
-		else if(x == 84){
+		} else if (x == 84) {
 			lbl84.setVisible(false);
-		}
-		else if(x == 85){
+		} else if (x == 85) {
 			lbl85.setVisible(false);
-		}
-		else if(x == 86){
+		} else if (x == 86) {
 			lbl86.setVisible(false);
-		}
-		else if(x == 87){
+		} else if (x == 87) {
 			lbl87.setVisible(false);
-		}
-		else if(x == 88){
+		} else if (x == 88) {
 			lbl88.setVisible(false);
-		}
-		else if(x == 89){
+		} else if (x == 89) {
 			lbl89.setVisible(false);
-		}
-		else if(x == 90){
+		} else if (x == 90) {
 			lbl90.setVisible(false);
 		}
 
-		else if(x == 91){
+		else if (x == 91) {
 			lbl91.setVisible(false);
-		}
-		else if(x == 92){
+		} else if (x == 92) {
 			lbl92.setVisible(false);
-		}
-		else if(x == 93){
+		} else if (x == 93) {
 			lbl93.setVisible(false);
-		}
-		else if(x == 94){
+		} else if (x == 94) {
 			lbl94.setVisible(false);
-		}
-		else if(x == 95){
+		} else if (x == 95) {
 			lbl95.setVisible(false);
-		}
-		else if(x == 96){
+		} else if (x == 96) {
 			lbl96.setVisible(false);
-		}
-		else if(x == 97){
+		} else if (x == 97) {
 			lbl97.setVisible(false);
-		}
-		else if(x == 98){
+		} else if (x == 98) {
 			lbl98.setVisible(false);
-		}
-		else if(x == 99){
+		} else if (x == 99) {
 			lbl99.setVisible(false);
-		}
-		else if(x == 100){
+		} else if (x == 100) {
 			lbl100.setVisible(false);
 		}
 
-
-		PositionCheck(x);   //positionCheck method k call kortesi.. karon same position e koyjon ase chk korar jonne
-
-		//nicher tukun bug fix korte help kore
-		//JOptionPane.showMessageDialog(null, "remove image at "+String.valueOf(x)+" for player "+String.valueOf(player));
+		PositionCheck(x);
 	}
-
 
 	/**
 	 * Create the frame.
 	 */
 
-
-
-
-	public void Dice(){
+	public void Dice() {
 		Random rn = new Random();
 
-		point = rn.nextInt(6)+1;
+		point = rn.nextInt(6) + 1;
 		oldPosition = point;
-		//point=chokkaTest();
 
 		String dice = String.valueOf(point);
-		String location = "/Image/dice "+dice+".jpg";
+		String location = "/Image/dice " + dice + ".jpg";
 		lblDimage.setIcon(new ImageIcon(Main.class.getResource(location)));
 
-		if(point==1) flag[player-1]=1;
-		if(flag[player-1]==1)movedisc();
-		//System.out.println("Dice: "+dice);
-		
+		if (point == 1)
+			flag[player - 1] = 1;
+		if (flag[player - 1] == 1)
+			movedisc();
+
 	}
-	
 
-	/* 	public void Paint(int x, int y){
-		//System.out.println("Paint from: "+x+" to "+y);
-		new Thread() {
-	        @Override
-	        public void run() {
-	            try {
-	            	btnDice.setEnabled(false);
-	            	btnDice.setVisible(false);
-	            	Thread.sleep(500);
-	            	for(int i=x; i<y; i++){
-	            		//System.out.println("Paint Player after: "+p);
-	            		RemoveImage(i);
-	            		Thread.sleep(50);
-		            	SetImage(i+1,player);
-		                Thread.sleep(500);
-	            	}
-	            	btnDice.setVisible(true);
-	            	btnDice.setEnabled(true);
-	            } catch (InterruptedException ex) {
-	                Thread.currentThread().interrupt();
-	                JOptionPane.showMessageDialog(null, "Paint timer error!");
-	            }
+	public void movedisc() {
+		if (point == 6)
+			chokka++;
+		else
+			chokka = 0;
 
-	        }
-	    }.start();
-	    
-	    
-	   ActionListener taskPerformer = new ActionListener() {
-	        public void actionPerformed(ActionEvent evt) {
-	                
+		if (chokka > 0)
+			chokkarAaagerPosition = playerposition[player - 1];
 
-	        }
-	    };
-	    javax.swing.Timer t = new javax.swing.Timer(1000, taskPerformer);
-	    t.setRepeats(false);
-	    t.start();
-	}
-	*/
-	
-
-
-
-	   //disc move korate ei function
-	public void movedisc(){
-		//oldposition = playerposition[player-1];
-		
-		//----------------chokka uthle count baraitesi ar na uthle count 0---------//
-		if(point==6)chokka++;
-        else chokka=0;
-
-		if(chokka>0)
-		chokkarAaagerPosition=playerposition[player-1];
-		//---------------------------------------//
-		
-		if(playerposition[player-1]+point >100){   //player er position 100er beshi hoile ager jaygay e thakbe//
-			playerposition[player-1]= playerposition[player-1] ;
+		if (playerposition[player - 1] + point > 100) {
+			playerposition[player - 1] = playerposition[player - 1];
 		}
-		
-		
-		//------------3bar chokka uthle ager ghore pathaye dibe-------------//
-		else if(chokka==3){
-			playerposition[player-1]=chokkarAaagerPosition;
+
+		else if (chokka == 3) {
+			playerposition[player - 1] = chokkarAaagerPosition;
 		}
-		//---------------------------------//
-		
-		
-		else{
-			//Paint(playerposition[player-1],playerposition[player-1]+point);
-//			removeImage rimage = new removeImage();
-		removeImage(playerposition[player-1]);    //she ekhon notun position e jabe. ager ghor thaikka ore bair kore deye hocche  :(
-		playerposition[player-1]+=point;              //tar ager position er sathe chal e asha man jog kortese
-		//RemoveImage(oldposition);
 
-		imageSetter.SetImage(playerposition[player-1], player, labels);      //jei jei player tar tar position e boshacche, chal e man pawar por
+		else {
+			removeImage(playerposition[player - 1]);
+			playerposition[player - 1] += point;
 
-			
-			SkipTest(playerposition[player-1]);    //shap e katse kina ba moi baia upore uthse kina dekhtese
+			imageSetter.SetImage(playerposition[player - 1], player, labels);
+			SkipTest(playerposition[player - 1]);
 
+			if (playerposition[player - 1] != Skipper(playerposition[player - 1])) {
+				removeImage(playerposition[player - 1]);
+				playerposition[player - 1] = Skipper(playerposition[player - 1]);
+				imageSetter.SetImage(playerposition[player - 1], player, labels);
+			}
 
-		if(playerposition[player-1] != Skipper(playerposition[player-1])){     //jodi shap e kate ba moi paia jay tahole amader ja koroniyo
-			removeImage(playerposition[player-1]);
-			playerposition[player-1]=Skipper(playerposition[player-1]);
-			imageSetter.SetImage(playerposition[player-1], player, labels);
-		}  
-        
-		//-------win check//
-		if(playerposition[player-1]==100) winingPosition++;
-		
-		if(playerposition[player-1] ==100 && flag1==0){   //
-			JOptionPane.showMessageDialog(null, "Player "+player+" won!!");
-			flag1=1;
-			ended_at= getCurrentTime();
-;			storeGameHistory(player);
-//			ActionEvent event = new ActionEvent();
-			restartGame(null,1);
+			// -------win check//
+			if (playerposition[player - 1] == 100)
+				winingPosition++;
 
-		}
-		//--------//
-		
-		if(player==1){
-			
-			
-			 if(playerposition[player-1]==100 && winingPosition==2) p1score.setText("Looser HaHA ");
-			 else if(playerposition[player-1]==100) p1score.setText("Winner "+winingPosition);
-			else p1score.setText(String.valueOf(playerposition[player-1]));	    //churi korte jate na psros tai score show koira ditese
-		}
-		
-//		else if(player==2){
+			if (playerposition[player - 1] == 100 && flag1 == 0) {
+				JOptionPane.showMessageDialog(null, "Player " + player + " won!!");
+				flag1 = 1;
+				ended_at = getCurrentTime();
+				;
+				storeGameHistory(player);
+				restartGame(null, 1);
+
+			}
+
+			if (player == 1) {
+				if (playerposition[player - 1] == 100 && winingPosition == 2)
+					p1score.setText("Looser HaHA ");
+				else if (playerposition[player - 1] == 100)
+					p1score.setText("Winner " + winingPosition);
+				else
+					p1score.setText(String.valueOf(playerposition[player - 1]));
+			}
+
 			else {
 
-			 if(playerposition[player-1]==100 && winingPosition==2) p2score.setText("Looser HaHA! ");
-			 else if(playerposition[player-1]==100) p2score.setText("Winner "+winingPosition);
-			else 
-			p2score.setText(String.valueOf(playerposition[player-1]));	 	//score show
-		
-			
-		}
-//		else if(player==3){
-//
-//			 if (playerposition[player-1]==100 && winingPosition==4) p3score.setText("Looser HaHA ");
-//			 else if(playerposition[player-1]==100) p3score.setText("Winner "+winingPosition);
-//				else
-//				p3score.setText(String.valueOf(playerposition[player-1]));	 	//score show
-//
-//
-//		}
-//		else if(player==4){
-//
-//			 if (playerposition[player-1]==100 && winingPosition==4) p4score.setText("Looser HaHA ");
-//			 else if(playerposition[player-1]==100) p4score.setText("Winner "+winingPosition);
-//				else
-//				p4score.setText(String.valueOf(playerposition[player-1]));	 	//score show
-//		}
-		}
+				if (playerposition[player - 1] == 100 && winingPosition == 2)
+					p2score.setText("Looser HaHA! ");
+				else if (playerposition[player - 1] == 100)
+					p2score.setText("Winner " + winingPosition);
+				else
+					p2score.setText(String.valueOf(playerposition[player - 1])); // score show
 
-	}
-	
-	
-
-
-
-
-	public void PositionCheck(int x){         //dhor dui jon ek ghor e gese.. ek jon bair hoia jawar shomoy jate arekjon na bair hoia jaite pare
-
-		for(int i=0; i<2; i++){ /// changed from 4 to 2;
-			if(playerposition[i] == x && playerposition[i] != 0 && player != i+1){
-				imageSetter.SetImage(x, i+1, labels);
-				JOptionPane.showMessageDialog(null	, "Player matched with player "+String.valueOf(i+1));
 			}
 		}
-		//JOptionPane.showMessageDialog(null, "position check ok");
 
 	}
 
+	public void PositionCheck(int x) {
 
-
-
-
+		for (int i = 0; i < 2; i++) {
+			if (playerposition[i] == x && playerposition[i] != 0 && player != i + 1) {
+				imageSetter.SetImage(x, i + 1, labels);
+			}
+		}
+	}
 
 	public Main(String player1_usernames, String player2_usernames) {
 
-		setTitle("Snake and Ladder");          //constructor
+		setTitle("Snake and Ladder"); // constructor
 		FrameinMiddle();
-        initialize(player1_usernames, player2_usernames);
-
+		initialize(player1_usernames, player2_usernames);
 
 	}
-
-
-
 
 	/*
 	 * Checks if a certain block has ladder or snake
 	 */
-	public void SkipTest(int score){              ///jOptionpane e show korbe shap katse kina ba moi paise kina
-		if(score == 23 || score == 32  || score == 61  || score == 65 || score == 75 ){
-			System.out.println("Ladder at "+score);
-			JOptionPane.showMessageDialog(null, "Climbed Ladder at "+String.valueOf(score));
-		}
-		else if(score == 21  ||score == 27 ||  score == 47 || score == 56  ||score == 74  || score == 90  || score == 99 ){
-			System.out.println("Snake at "+score);
-			JOptionPane.showMessageDialog(null, "Eaten by Snake at "+String.valueOf(score));
+	public void SkipTest(int score) {
+		if (score == 23 || score == 32 || score == 61 || score == 65 || score == 75) {
+			System.out.println("Ladder at " + score);
+		} else if (score == 21 || score == 27 || score == 47 || score == 56 || score == 74 || score == 90
+				|| score == 99) {
+			System.out.println("Snake at " + score);
 		}
 	}
 
-
-
-
-	/*
-	 * shap katle ba moi paile onno ghore jabe oi fucntion
-	 */
-	public int Skipper(int score){
-		if(score == 21)
+	public int Skipper(int score) {
+		if (score == 21)
 			return 2;
-		else if(score == 27)
+		else if (score == 27)
 			return 15;
-		else if(score == 23)
+		else if (score == 23)
 			return 42;
-		else if(score == 32)
+		else if (score == 32)
 			return 51;
 
-		else if(score == 47)
+		else if (score == 47)
 			return 29;
-		else if(score == 56)
+		else if (score == 56)
 			return 37;
-		else if(score == 61)
+		else if (score == 61)
 			return 79;
-		else if(score == 65)
+		else if (score == 65)
 			return 84;
-		else if(score == 74)
+		else if (score == 74)
 			return 46;
-		else if(score == 90)
+		else if (score == 90)
 			return 52;
-		else if(score == 75)
+		else if (score == 75)
 			return 96;
-		else if(score == 99)
+		else if (score == 99)
 			return 41;
 
 		else
@@ -777,23 +534,7 @@ public class Main extends JFrame {
 
 	}
 
-
-
-
-
-
-	 // kono ghor thaikka image remove korar jonne eita
-
-
-
-
-
-
-
-
-	// setImage
-
-
+	// play dice roll sound
 	public static void playStaticSound() {
 		try {
 			// Load the sound file
@@ -820,17 +561,17 @@ public class Main extends JFrame {
 		}
 	}
 
-
 	public JLabel[] labels;
+
 	@SuppressWarnings("serial")
 
-	public void initialize(String player1_usernames, String player2_usernames){    //game board er label, ghorer label and other label gula shob initialize kortesi
+	public void initialize(String player1_usernames, String player2_usernames) {
 		started_at = getCurrentTime();
-;		this.player1_username= player1_usernames;
-		this.player2_username= player2_usernames;
+		;
+		this.player1_username = player1_usernames;
+		this.player2_username = player2_usernames;
 
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
 
 		this.addWindowListener(new WindowAdapter() {
 			@Override
@@ -842,11 +583,6 @@ public class Main extends JFrame {
 		});
 
 		setBounds(100, 100, 1200, 720);
-		
-		
-		
-		
-
 
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 102));
@@ -858,403 +594,403 @@ public class Main extends JFrame {
 		lbl1.setBounds(92, 576, 60, 60);
 		contentPane.add(lbl1);
 
-		 lbl2 = new JLabel("");
+		lbl2 = new JLabel("");
 		lbl2.setBounds(151, 576, 60, 60);
 		contentPane.add(lbl2);
 
-		 lbl3 = new JLabel("");
+		lbl3 = new JLabel("");
 		lbl3.setBounds(211, 576, 60, 60);
 		contentPane.add(lbl3);
 
-		 lbl4 = new JLabel("");
+		lbl4 = new JLabel("");
 		lbl4.setBounds(271, 576, 60, 60);
 		contentPane.add(lbl4);
 
-		 lbl5 = new JLabel("");
+		lbl5 = new JLabel("");
 		lbl5.setBounds(331, 576, 60, 60);
 		contentPane.add(lbl5);
 
-		 lbl6 = new JLabel("");
+		lbl6 = new JLabel("");
 		lbl6.setBounds(393, 576, 60, 60);
 		contentPane.add(lbl6);
 
-		 lbl7 = new JLabel("");
+		lbl7 = new JLabel("");
 		lbl7.setBounds(453, 576, 60, 60);
 		contentPane.add(lbl7);
 
-		 lbl8 = new JLabel("");
+		lbl8 = new JLabel("");
 		lbl8.setBounds(511, 576, 60, 60);
 		contentPane.add(lbl8);
 
-		 lbl9 = new JLabel("");
+		lbl9 = new JLabel("");
 		lbl9.setBounds(572, 576, 60, 60);
 		contentPane.add(lbl9);
 
-		 lbl10 = new JLabel("");
+		lbl10 = new JLabel("");
 		lbl10.setBounds(630, 576, 60, 60);
 		contentPane.add(lbl10);
 
-		 lbl19 = new JLabel("");
+		lbl19 = new JLabel("");
 		lbl19.setBounds(151, 517, 60, 60);
 		contentPane.add(lbl19);
 
-		 lbl20 = new JLabel("");
+		lbl20 = new JLabel("");
 		lbl20.setBounds(92, 517, 60, 60);
 		contentPane.add(lbl20);
 
-		 lbl18 = new JLabel("");
+		lbl18 = new JLabel("");
 		lbl18.setBounds(211, 517, 60, 60);
 		contentPane.add(lbl18);
 
-		 lbl17 = new JLabel("");
+		lbl17 = new JLabel("");
 		lbl17.setBounds(271, 517, 60, 60);
 		contentPane.add(lbl17);
 
-		 lbl16 = new JLabel("");
+		lbl16 = new JLabel("");
 		lbl16.setBounds(331, 517, 60, 60);
 		contentPane.add(lbl16);
 
-		 lbl15 = new JLabel("");
+		lbl15 = new JLabel("");
 		lbl15.setBounds(393, 517, 60, 60);
 		contentPane.add(lbl15);
 
-		 lbl14 = new JLabel("");
+		lbl14 = new JLabel("");
 		lbl14.setBounds(453, 517, 60, 60);
 		contentPane.add(lbl14);
 
-		 lbl13 = new JLabel("");
+		lbl13 = new JLabel("");
 		lbl13.setBounds(511, 517, 60, 60);
 		contentPane.add(lbl13);
 
-		 lbl12 = new JLabel("");
+		lbl12 = new JLabel("");
 		lbl12.setBounds(572, 517, 60, 60);
 		contentPane.add(lbl12);
 
-		 lbl11 = new JLabel("");
+		lbl11 = new JLabel("");
 		lbl11.setBounds(630, 517, 60, 60);
 		contentPane.add(lbl11);
 
-		 lbl22 = new JLabel("");
+		lbl22 = new JLabel("");
 		lbl22.setBounds(151, 457, 60, 60);
 		contentPane.add(lbl22);
 
-		 lbl21 = new JLabel("");
+		lbl21 = new JLabel("");
 		lbl21.setBounds(92, 457, 60, 60);
 		contentPane.add(lbl21);
 
-		 lbl23 = new JLabel("");
+		lbl23 = new JLabel("");
 		lbl23.setBounds(211, 457, 60, 60);
 		contentPane.add(lbl23);
 
-		 lbl24 = new JLabel("");
+		lbl24 = new JLabel("");
 		lbl24.setBounds(271, 457, 60, 60);
 		contentPane.add(lbl24);
 
-		 lbl25 = new JLabel("");
+		lbl25 = new JLabel("");
 		lbl25.setBounds(331, 457, 60, 60);
 		contentPane.add(lbl25);
 
-		 lbl26 = new JLabel("");
+		lbl26 = new JLabel("");
 		lbl26.setBounds(393, 457, 60, 60);
 		contentPane.add(lbl26);
 
-		 lbl27 = new JLabel("");
+		lbl27 = new JLabel("");
 		lbl27.setBounds(453, 457, 60, 60);
 		contentPane.add(lbl27);
 
-		 lbl28 = new JLabel("");
+		lbl28 = new JLabel("");
 		lbl28.setBounds(511, 457, 60, 60);
 		contentPane.add(lbl28);
 
-		 lbl29 = new JLabel("");
+		lbl29 = new JLabel("");
 		lbl29.setBounds(572, 457, 60, 60);
 		contentPane.add(lbl29);
 
-		 lbl30 = new JLabel("");
+		lbl30 = new JLabel("");
 		lbl30.setBounds(630, 457, 60, 60);
 		contentPane.add(lbl30);
 
-		 lbl39 = new JLabel("");
+		lbl39 = new JLabel("");
 		lbl39.setBounds(151, 396, 60, 60);
 		contentPane.add(lbl39);
 
-		 lbl40 = new JLabel("");
+		lbl40 = new JLabel("");
 		lbl40.setBounds(92, 396, 60, 60);
 		contentPane.add(lbl40);
 
-		 lbl38 = new JLabel("");
+		lbl38 = new JLabel("");
 		lbl38.setBounds(211, 396, 60, 60);
 		contentPane.add(lbl38);
 
-		 lbl37 = new JLabel("");
+		lbl37 = new JLabel("");
 		lbl37.setBounds(271, 396, 60, 60);
 		contentPane.add(lbl37);
 
-		 lbl36 = new JLabel("");
+		lbl36 = new JLabel("");
 		lbl36.setBounds(331, 396, 60, 60);
 		contentPane.add(lbl36);
 
-		 lbl35 = new JLabel("");
+		lbl35 = new JLabel("");
 		lbl35.setBounds(393, 396, 60, 60);
 		contentPane.add(lbl35);
 
-		 lbl34 = new JLabel("");
+		lbl34 = new JLabel("");
 		lbl34.setBounds(453, 396, 60, 60);
 		contentPane.add(lbl34);
 
-		 lbl33 = new JLabel("");
+		lbl33 = new JLabel("");
 		lbl33.setBounds(511, 396, 60, 60);
 		contentPane.add(lbl33);
 
-		 lbl32 = new JLabel("");
+		lbl32 = new JLabel("");
 		lbl32.setBounds(572, 396, 60, 60);
 		contentPane.add(lbl32);
 
-		 lbl31 = new JLabel("");
+		lbl31 = new JLabel("");
 		lbl31.setBounds(630, 396, 60, 60);
 		contentPane.add(lbl31);
 
-		 lbl42 = new JLabel("");
+		lbl42 = new JLabel("");
 		lbl42.setBounds(151, 335, 60, 60);
 		contentPane.add(lbl42);
 
-		 lbl41 = new JLabel("");
+		lbl41 = new JLabel("");
 		lbl41.setBounds(92, 335, 60, 60);
 		contentPane.add(lbl41);
 
-		 lbl43 = new JLabel("");
+		lbl43 = new JLabel("");
 		lbl43.setBounds(211, 335, 60, 60);
 		contentPane.add(lbl43);
 
-		 lbl44 = new JLabel("");
+		lbl44 = new JLabel("");
 		lbl44.setBounds(271, 335, 60, 60);
 		contentPane.add(lbl44);
 
-		 lbl45 = new JLabel("");
+		lbl45 = new JLabel("");
 		lbl45.setBounds(331, 335, 60, 60);
 		contentPane.add(lbl45);
 
-		 lbl46 = new JLabel("");
+		lbl46 = new JLabel("");
 		lbl46.setBounds(393, 335, 60, 60);
 		contentPane.add(lbl46);
 
-		 lbl47 = new JLabel("");
+		lbl47 = new JLabel("");
 		lbl47.setBounds(453, 335, 60, 60);
 		contentPane.add(lbl47);
 
-         lbl48 = new JLabel("");
+		lbl48 = new JLabel("");
 		lbl48.setBounds(511, 335, 60, 60);
 		contentPane.add(lbl48);
 
-		 lbl49 = new JLabel("");
+		lbl49 = new JLabel("");
 		lbl49.setBounds(572, 335, 60, 60);
 		contentPane.add(lbl49);
 
-		 lbl50 = new JLabel("");
+		lbl50 = new JLabel("");
 		lbl50.setBounds(630, 335, 60, 60);
 		contentPane.add(lbl50);
 
-		 lbl59 = new JLabel("");
+		lbl59 = new JLabel("");
 		lbl59.setBounds(151, 277, 60, 60);
 		contentPane.add(lbl59);
 
-		 lbl60 = new JLabel("");
+		lbl60 = new JLabel("");
 		lbl60.setBounds(92, 277, 60, 60);
 		contentPane.add(lbl60);
 
-		 lbl58 = new JLabel("");
+		lbl58 = new JLabel("");
 		lbl58.setBounds(211, 277, 60, 60);
 		contentPane.add(lbl58);
 
-		 lbl57 = new JLabel("");
+		lbl57 = new JLabel("");
 		lbl57.setBounds(271, 277, 60, 60);
 		contentPane.add(lbl57);
 
-		 lbl56 = new JLabel("");
+		lbl56 = new JLabel("");
 		lbl56.setBounds(331, 277, 60, 60);
 		contentPane.add(lbl56);
 
-		 lbl55 = new JLabel("");
+		lbl55 = new JLabel("");
 		lbl55.setBounds(393, 277, 60, 60);
 		contentPane.add(lbl55);
 
-		 lbl54 = new JLabel("");
+		lbl54 = new JLabel("");
 		lbl54.setBounds(453, 277, 60, 60);
 		contentPane.add(lbl54);
 
-		 lbl53 = new JLabel("");
+		lbl53 = new JLabel("");
 		lbl53.setBounds(511, 277, 60, 60);
 		contentPane.add(lbl53);
 
-		 lbl52 = new JLabel("");
+		lbl52 = new JLabel("");
 		lbl52.setBounds(572, 277, 60, 60);
 		contentPane.add(lbl52);
 
-		 lbl51 = new JLabel("");
+		lbl51 = new JLabel("");
 		lbl51.setBounds(630, 277, 60, 60);
 		contentPane.add(lbl51);
 
-		 lbl62 = new JLabel("");
+		lbl62 = new JLabel("");
 		lbl62.setBounds(151, 217, 60, 60);
 		contentPane.add(lbl62);
 
-		 lbl61 = new JLabel("");
+		lbl61 = new JLabel("");
 		lbl61.setBounds(92, 217, 60, 60);
 		contentPane.add(lbl61);
 
-		 lbl63 = new JLabel("");
+		lbl63 = new JLabel("");
 		lbl63.setBounds(211, 217, 60, 60);
 		contentPane.add(lbl63);
 
-		 lbl64 = new JLabel("");
+		lbl64 = new JLabel("");
 		lbl64.setBounds(271, 217, 60, 60);
 		contentPane.add(lbl64);
 
-		 lbl65 = new JLabel("");
+		lbl65 = new JLabel("");
 		lbl65.setBounds(331, 217, 60, 60);
 		contentPane.add(lbl65);
 
-		 lbl66 = new JLabel("");
+		lbl66 = new JLabel("");
 		lbl66.setBounds(393, 217, 60, 60);
 		contentPane.add(lbl66);
 
-		 lbl67 = new JLabel("");
+		lbl67 = new JLabel("");
 		lbl67.setBounds(453, 217, 60, 60);
 		contentPane.add(lbl67);
 
-		 lbl68 = new JLabel("");
+		lbl68 = new JLabel("");
 		lbl68.setBounds(511, 217, 60, 60);
 		contentPane.add(lbl68);
 
-		 lbl69 = new JLabel("");
+		lbl69 = new JLabel("");
 		lbl69.setBounds(572, 217, 60, 60);
 		contentPane.add(lbl69);
 
-		 lbl70 = new JLabel("");
+		lbl70 = new JLabel("");
 		lbl70.setBounds(630, 217, 60, 60);
 		contentPane.add(lbl70);
 
-		 lbl79 = new JLabel("");
+		lbl79 = new JLabel("");
 		lbl79.setBounds(151, 157, 60, 60);
 		contentPane.add(lbl79);
 
-		 lbl80 = new JLabel("");
+		lbl80 = new JLabel("");
 		lbl80.setBounds(92, 157, 60, 60);
 		contentPane.add(lbl80);
 
-		 lbl78 = new JLabel("");
+		lbl78 = new JLabel("");
 		lbl78.setBounds(211, 157, 60, 60);
 		contentPane.add(lbl78);
 
-		 lbl77 = new JLabel("");
+		lbl77 = new JLabel("");
 		lbl77.setBounds(271, 157, 60, 60);
 		contentPane.add(lbl77);
 
-		 lbl76 = new JLabel("");
+		lbl76 = new JLabel("");
 		lbl76.setBounds(341, 157, 50, 60);
 		contentPane.add(lbl76);
 
-		 lbl75 = new JLabel("");
+		lbl75 = new JLabel("");
 		lbl75.setBounds(393, 157, 60, 60);
 		contentPane.add(lbl75);
 
-		 lbl74 = new JLabel("");
+		lbl74 = new JLabel("");
 		lbl74.setBounds(453, 157, 60, 60);
 		contentPane.add(lbl74);
 
-		 lbl73 = new JLabel("");
+		lbl73 = new JLabel("");
 		lbl73.setBounds(511, 157, 60, 60);
 		contentPane.add(lbl73);
 
-		 lbl72 = new JLabel("");
+		lbl72 = new JLabel("");
 		lbl72.setBounds(572, 157, 60, 60);
 		contentPane.add(lbl72);
 
-		 lbl71 = new JLabel("");
+		lbl71 = new JLabel("");
 		lbl71.setBounds(630, 157, 60, 60);
 		contentPane.add(lbl71);
 
-		 lbl82 = new JLabel("");
+		lbl82 = new JLabel("");
 		lbl82.setBounds(151, 97, 60, 60);
 		contentPane.add(lbl82);
 
-		 lbl81 = new JLabel("");
+		lbl81 = new JLabel("");
 		lbl81.setBounds(92, 97, 60, 60);
 		contentPane.add(lbl81);
 
-		 lbl83 = new JLabel("");
+		lbl83 = new JLabel("");
 		lbl83.setBounds(211, 97, 60, 60);
 		contentPane.add(lbl83);
 
-		 lbl84 = new JLabel("");
+		lbl84 = new JLabel("");
 		lbl84.setBounds(271, 97, 60, 60);
 		contentPane.add(lbl84);
 
-		 lbl85 = new JLabel("");
+		lbl85 = new JLabel("");
 		lbl85.setBounds(331, 97, 60, 60);
 		contentPane.add(lbl85);
 
-		 lbl86 = new JLabel("");
+		lbl86 = new JLabel("");
 		lbl86.setBounds(393, 97, 60, 60);
 		contentPane.add(lbl86);
 
-		 lbl87 = new JLabel("");
+		lbl87 = new JLabel("");
 		lbl87.setBounds(453, 97, 60, 60);
 		contentPane.add(lbl87);
 
-		 lbl88 = new JLabel("");
+		lbl88 = new JLabel("");
 		lbl88.setBounds(511, 97, 60, 60);
 		contentPane.add(lbl88);
 
-		 lbl89 = new JLabel("");
+		lbl89 = new JLabel("");
 		lbl89.setBounds(572, 97, 60, 60);
 		contentPane.add(lbl89);
 
-		 lbl90 = new JLabel("");
+		lbl90 = new JLabel("");
 		lbl90.setBounds(630, 97, 60, 60);
 		contentPane.add(lbl90);
 
-		 lbl99 = new JLabel("");
+		lbl99 = new JLabel("");
 		lbl99.setBounds(151, 38, 60, 60);
 		contentPane.add(lbl99);
 
-		 lbl100 = new JLabel("");
+		lbl100 = new JLabel("");
 		lbl100.setBounds(92, 38, 60, 60);
 		contentPane.add(lbl100);
 
-		 lbl98 = new JLabel("");
+		lbl98 = new JLabel("");
 		lbl98.setBounds(211, 38, 60, 60);
 		contentPane.add(lbl98);
 
-		 lbl97 = new JLabel("");
+		lbl97 = new JLabel("");
 		lbl97.setBounds(271, 38, 60, 60);
 		contentPane.add(lbl97);
 
-		 lbl96 = new JLabel("");
+		lbl96 = new JLabel("");
 		lbl96.setBounds(331, 38, 60, 60);
 		contentPane.add(lbl96);
 
-		 lbl95 = new JLabel("");
+		lbl95 = new JLabel("");
 		lbl95.setBounds(393, 38, 60, 60);
 		contentPane.add(lbl95);
 
-		 lbl94 = new JLabel("");
+		lbl94 = new JLabel("");
 		lbl94.setBounds(453, 38, 60, 60);
 		contentPane.add(lbl94);
 
-		 lbl93 = new JLabel("");
+		lbl93 = new JLabel("");
 		lbl93.setBounds(511, 38, 60, 60);
 		contentPane.add(lbl93);
 
-		 lbl92 = new JLabel("");
+		lbl92 = new JLabel("");
 		lbl92.setBounds(572, 38, 60, 60);
 		contentPane.add(lbl92);
 
-		 lbl91 = new JLabel("");
+		lbl91 = new JLabel("");
 		lbl91.setBounds(630, 38, 60, 60);
 		contentPane.add(lbl91);
 
-		labels = new JLabel[]{
+		labels = new JLabel[] {
 				lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10,
 				lbl11, lbl12, lbl13, lbl14, lbl15, lbl16, lbl17, lbl18, lbl19, lbl20,
 				lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl27, lbl28, lbl29, lbl30,
@@ -1267,92 +1003,61 @@ public class Main extends JFrame {
 				lbl91, lbl92, lbl93, lbl94, lbl95, lbl96, lbl97, lbl98, lbl99, lbl100
 		};
 
-		 lblPlayerName = new JLabel("Playing Player -");
-		 lblPlayerName.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-		 lblPlayerName.setForeground(new Color(51, 204, 204));
+		lblPlayerName = new JLabel("Playing Player -");
+		lblPlayerName.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		lblPlayerName.setForeground(new Color(51, 204, 204));
 		lblPlayerName.setBounds(724, 67, 200, 26);
 		contentPane.add(lblPlayerName);
 
-		 btnDice = new JButton("Roll Dice");
-		 btnDice.setFont(new Font("Comic Sans MS", Font.BOLD, 27));
-		 btnDice.setForeground(new Color(255, 255, 255));
-		 btnDice.setBackground(new Color(0, 0, 51));
-		 btnDice.setFocusable(false);
+		btnDice = new JButton("Roll Dice");
+		btnDice.setFont(new Font("Comic Sans MS", Font.BOLD, 27));
+		btnDice.setForeground(new Color(255, 255, 255));
+		btnDice.setBackground(new Color(0, 0, 51));
+		btnDice.setFocusable(false);
 
-		 btnDice.addActionListener(new ActionListener() {
-		 	public void actionPerformed(ActionEvent e) {
-		 		btnDice.setBackground(new Color(0, 0, 0));
-//				playStaticSound();
-		 		if(chokka==0){
-		 		if(winingPosition==2){
-		 			int confirm = JOptionPane.showConfirmDialog(null, "Replay?", "", JOptionPane.YES_NO_OPTION);
-					if(confirm == JOptionPane.YES_OPTION){
-						dispose();
-						Main frame = new Main(player1_username, player2_username);
-						frame.setVisible(true);
-					}
-					else{
-						setVisible(false); //you can't see me!
-						dispose(); //Destroy the JFrame object
-						
-					}
-		 		}
+		btnDice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnDice.setBackground(new Color(0, 0, 0));
+				playStaticSound();
+				if (chokka == 0) {
+					if (winingPosition == 2) {
+						int confirm = JOptionPane.showConfirmDialog(null, "Replay?", "", JOptionPane.YES_NO_OPTION);
+						if (confirm == JOptionPane.YES_OPTION) {
+							dispose();
+							Main frame = new Main(player1_username, player2_username);
+							frame.setVisible(true);
+						} else {
+							setVisible(false);
+							dispose(); // Destroy the JFrame object
 
-					System.out.println(player + "player in Dice()" + oldPosition);
-					//--------current player number show-------//
+						}
+					}
+					// --------current player number show-------//
 					// give chance to player if dice point is 6
-					if(player==2 && oldPosition != 6)lblPlayer.setText(String.valueOf(2)); // changed
-		 		else if(player==1 && oldPosition != 6) lblPlayer.setText(String.valueOf(1));
-//				 if(player ==2 ) {
-//					 if(oldPosition == 6) {
-//						 System.out.println("player 2 " + point + "point");
-//						 lblPlayer.setText(String.valueOf(2));
-//					 } else{
-//						 lblPlayer.setText(String.valueOf(1));
-//						 player = 1;
-//					 }
-//				 } else if(player == 1) {
-//					 if(oldPosition == 6) {
-//						 System.out.println("player 1 " + point + "point");
-//
-//
-//						 lblPlayer.setText(String.valueOf(1));
-//					 } else {
-//						 lblPlayer.setText(String.valueOf(2));
-//						 player = 2;
-//					 }
-//				 }
-
-		 		//---------------------------------------------//
-		 		}
-		 		Dice();                           //dice method call kortesi
-		 		if(chokka==0 && oldPosition != 6)
-		 		{
-		 			player++;                    //1jon dice click korlo... then arekjon dice click korbe
-		 		    if(player==3)player=1; // changed from 5 to 3;
-		 		}
-				 // karon amr game e 4jon player taai.. :/ :/
-//				else {
-//					player = (lblPlayer);
-//				}
-
-		 	}
-		 });
-		 btnDice.setBackground(new Color(0, 0, 51));
+					if (player == 2 && oldPosition != 6)
+						lblPlayer.setText(String.valueOf(2));
+					else if (player == 1 && oldPosition != 6)
+						lblPlayer.setText(String.valueOf(1));
+				}
+				Dice(); // dice method called
+				if (chokka == 0 && oldPosition != 6) {
+					player++;
+					if (player == 3)
+						player = 1;
+				}
+			}
+		});
+		btnDice.setBackground(new Color(0, 0, 51));
 		btnDice.setBounds(724, 122, 200, 44);
 		contentPane.add(btnDice);
 
-
-		//nicher ongshotukur kaj enter button chaplei jate  button kaj kore taai..
 		contentPane.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "EXIT");
-                contentPane.getRootPane().getActionMap().put("EXIT", new AbstractAction(){
-                public void actionPerformed(ActionEvent e)
-                	{
-                		btnDice.doClick();
-                	}
-                });
-
+				KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "EXIT");
+		contentPane.getRootPane().getActionMap().put("EXIT", new AbstractAction() {
+			public void actionPerformed(ActionEvent e) {
+				btnDice.doClick();
+			}
+		});
 
 		lblP1 = new JLabel(player1_username);
 		lblP1.setForeground(new Color(0, 204, 255));
@@ -1365,119 +1070,74 @@ public class Main extends JFrame {
 		lblDimage.setBounds(724, 176, 132, 129);
 		contentPane.add(lblDimage);
 
-        p1score = new JLabel("Score");
-        p1score.setHorizontalAlignment(SwingConstants.LEFT);
-        p1score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-        p1score.setForeground(new Color(255, 255, 255));
-        p1score.setBounds(790, 329, 84, 14);
-        contentPane.add(p1score);
+		p1score = new JLabel("Score");
+		p1score.setHorizontalAlignment(SwingConstants.LEFT);
+		p1score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+		p1score.setForeground(new Color(255, 255, 255));
+		p1score.setBounds(790, 329, 84, 14);
+		contentPane.add(p1score);
 
-        lblP2 = new JLabel(player2_username);
-        lblP2.setFont(new Font("Tahoma", Font.BOLD, 16));
-        lblP2.setForeground(new Color(255, 204, 0));
-        lblP2.setBounds(718, 389, 100, 14);
-        contentPane.add(lblP2);
+		lblP2 = new JLabel(player2_username);
+		lblP2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblP2.setForeground(new Color(255, 204, 0));
+		lblP2.setBounds(718, 389, 100, 14);
+		contentPane.add(lblP2);
 
-        p2score = new JLabel("Score");
-        p2score.setHorizontalAlignment(SwingConstants.LEFT);
-        p2score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-        p2score.setForeground(new Color(255, 255, 255));
-        p2score.setBounds(790, 389, 84, 14);
-        contentPane.add(p2score);
-        lblBoard.setBounds(92, 38, 600, 600);
-        contentPane.add(lblBoard);
+		p2score = new JLabel("Score");
+		p2score.setHorizontalAlignment(SwingConstants.LEFT);
+		p2score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+		p2score.setForeground(new Color(255, 255, 255));
+		p2score.setBounds(790, 389, 84, 14);
+		contentPane.add(p2score);
+		lblBoard.setBounds(92, 38, 600, 600);
+		contentPane.add(lblBoard);
 
+		lblBoard.setIcon(new ImageIcon(Main.class.getResource("/Image/Board Small 600 600.png")));
 
+		lblPlayer = new JLabel("1");
+		lblPlayer.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPlayer.setForeground(new Color(255, 0, 0));
+		lblPlayer.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		lblPlayer.setBounds(858, 67, 62, 26);
+		contentPane.add(lblPlayer);
 
-        lblBoard.setIcon(new ImageIcon(Main.class.getResource("/Image/Board Small 600 600.png")));
+		p1btn = new JLabel("");
+		p1btn.setIcon(new ImageIcon(Main.class.getResource("/Image/player 1.png")));
+		p1btn.setBounds(884, 312, 50, 50);
+		contentPane.add(p1btn);
 
-//        lblP3 = new JLabel("Player3-");
-//        lblP3.setFont(new Font("Tahoma", Font.BOLD, 16));
-//        lblP3.setForeground(new Color(255, 51, 102));
-//        lblP3.setBounds(718, 437, 69, 26);
-//        contentPane.add(lblP3);
-//
-//        p3score = new JLabel("Score");
-//        p3score.setHorizontalAlignment(SwingConstants.LEFT);
-//        p3score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-//        p3score.setForeground(new Color(255, 255, 255));
-//        p3score.setBounds(790, 443, 84, 14);
-//        contentPane.add(p3score);
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(Main.class.getResource("/Image/player 2.png")));
+		label.setBounds(884, 367, 50, 50);
+		contentPane.add(label);
 
-//        lblP4 = new JLabel("Player4-");
-//        lblP4.setForeground(new Color(204, 51, 204));
-//        lblP4.setFont(new Font("Tahoma", Font.BOLD, 16));
-//        lblP4.setHorizontalAlignment(SwingConstants.CENTER);
-//        lblP4.setBounds(718, 499, 69, 14);
-//        contentPane.add(lblP4);
-//
-//        p4score = new JLabel("Score");
-//        p4score.setHorizontalAlignment(SwingConstants.LEFT);
-//        p4score.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-//        p4score.setForeground(new Color(255, 255, 255));
-//        p4score.setBounds(790, 499, 84, 14);
-//        contentPane.add(p4score);
-
-        lblPlayer = new JLabel("1");
-        lblPlayer.setHorizontalAlignment(SwingConstants.LEFT);
-        lblPlayer.setForeground(new Color(255, 0, 0));
-        lblPlayer.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-        lblPlayer.setBounds(858, 67, 62, 26);
-        contentPane.add(lblPlayer);
-
-        p1btn = new JLabel("");
-        p1btn.setIcon(new ImageIcon(Main.class.getResource("/Image/player 1.png")));
-        p1btn.setBounds(884, 312, 50, 50);
-        contentPane.add(p1btn);
-
-        label = new JLabel("");
-        label.setIcon(new ImageIcon(Main.class.getResource("/Image/player 2.png")));
-        label.setBounds(884, 367, 50, 50);
-        contentPane.add(label);
-
-//        label_1 = new JLabel("");
-//        label_1.setIcon(new ImageIcon(Main.Main.class.getResource("/Image/player 3.png")));
-//        label_1.setBounds(884, 429, 50, 50);
-//        contentPane.add(label_1);
-//
-//        label_2 = new JLabel("");
-//        label_2.setIcon(new ImageIcon(Main.Main.class.getResource("/Image/player 4.png")));
-//        label_2.setBounds(884, 490, 50, 50);
-//        contentPane.add(label_2);
-
-
-
-        btnRestart = new JButton("Restart??");
-        btnRestart.setBackground(new Color(255, 255, 255));
-        btnRestart.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnRestart = new JButton("Restart??");
+		btnRestart.setBackground(new Color(255, 255, 255));
+		btnRestart.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnRestart.setFocusable(false);
 
+		btnRestart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				restartGame(e, 0);
+			}
+		});
+		btnRestart.setBounds(734, 576, 150, 60);
+		contentPane.add(btnRestart);
 
-        btnRestart.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		restartGame(e, 0);
-        	}
-        });
-        btnRestart.setBounds(734, 576, 150, 60);
-        contentPane.add(btnRestart);
-
-
-
-
-
-        for(int i=0;i<2;i++){ // changed from 4 t0 2;
-        	playerposition[i]=0;
-        }
+		for (int i = 0; i < 2; i++) {
+			playerposition[i] = 0;
+		}
 	}
 
 	public void restartGame(ActionEvent e, int restart) {
-		if(restart == 1) {
+		if (restart == 1) {
 			dispose();
 			Main frame = new Main(player1_username, player2_username);
 			frame.setVisible(true);
 		} else {
-			int confirm = JOptionPane.showConfirmDialog(null, "Do you want to Restart?", "Restart!!!", JOptionPane.YES_NO_OPTION);
-			if(confirm == JOptionPane.YES_OPTION){
+			int confirm = JOptionPane.showConfirmDialog(null, "Do you want to Restart?", "Restart!!!",
+					JOptionPane.YES_NO_OPTION);
+			if (confirm == JOptionPane.YES_OPTION) {
 				dispose();
 				Main frame = new Main(player1_username, player2_username);
 				frame.setVisible(true);
@@ -1485,16 +1145,11 @@ public class Main extends JFrame {
 		}
 	}
 
-	public String getCurrentTime()
-	{
+	public String getCurrentTime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now);
 	}
-
-
-
-
 
 	public void storeGameHistory(int player) {
 		Connection dbconn = DBConnection.connectDB();
@@ -1503,14 +1158,9 @@ public class Main extends JFrame {
 		System.out.println(dbconn);
 		if (dbconn != null) {
 			try {
-				System.out.println("this is inside try");
-
-				System.out.println("the player won is>>>>" +
-						"" +
-						""+ player);
-
-				PreparedStatement st = dbconn.prepareStatement("INSERT INTO gamehistory(player1_name, player2_name, player1_gamestatus, player2_gamestatus) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-				System.out.println(player1_username + " " + player2_username);
+				PreparedStatement st = dbconn.prepareStatement(
+						"INSERT INTO gamehistory(player1_name, player2_name, player1_gamestatus, player2_gamestatus) VALUES (?, ?, ?, ?)",
+						Statement.RETURN_GENERATED_KEYS);
 
 				st.setString(1, player1_username);
 				st.setString(2, player2_username);
@@ -1519,13 +1169,12 @@ public class Main extends JFrame {
 
 				int res = st.executeUpdate();
 
-				System.out.println("this is after set string");
 				if (res > 0) {
 					ResultSet generatedKeys = st.getGeneratedKeys();
 					if (generatedKeys.next()) {
 						generatedID = generatedKeys.getInt(1);
-						st = dbconn.prepareStatement("INSERT INTO gamedata(game_history_id, started_at, ended_at) VALUES (?, ?, ?)");
-						System.out.println(player1_username + " " + player2_username);
+						st = dbconn.prepareStatement(
+								"INSERT INTO gamedata(game_history_id, started_at, ended_at) VALUES (?, ?, ?)");
 
 						st.setInt(1, generatedID);
 						st.setString(2, started_at);
@@ -1555,25 +1204,17 @@ public class Main extends JFrame {
 		} else {
 			System.out.println("Database connection is not established");
 		}
-		System.out.println("this is inside store Game history");
 	}
-
-
-
 
 	public void FrameinMiddle() {
 
-		Dimension screenSize,frameSize;
-		int x,y;
-		screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-		frameSize=getSize();
-		x=(screenSize.width-frameSize.width)/2;
-		y=(screenSize.height-frameSize.height)/2;
+		Dimension screenSize, frameSize;
+		int x, y;
+		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		frameSize = getSize();
+		x = (screenSize.width - frameSize.width) / 2;
+		y = (screenSize.height - frameSize.height) / 2;
 		setLocation(x, y);
-		}
-	
-
-	//sesh.. muri khan alu khan:/ :/
-
+	}
 
 }

@@ -18,8 +18,6 @@ public class UserRegisterPanel extends JFrame implements ActionListener {
 
     private JButton cancelButton;
 
-
-
     JLabel label = new JLabel();
 
     void userRegisterPanel() {
@@ -47,31 +45,30 @@ public class UserRegisterPanel extends JFrame implements ActionListener {
         player1_username = new JTextField();
         player1_username.setForeground(Color.BLACK);
         player1_username.setFont(new Font("Arial", Font.BOLD, 15));
-        player1_username.setBounds(200, 100, 200, 50);
+        player1_username.setBounds(250, 100, 200, 50);
         player1_username.addActionListener(this);
         mainPanel.add(player1_username);
 
         player2_username = new JTextField();
         player2_username.setForeground(Color.BLACK);
         player2_username.setFont(new Font("Arial", Font.BOLD, 15));
-        player2_username.setBounds(200, 180, 200, 50);
+        player2_username.setBounds(250, 180, 200, 50);
         player2_username.addActionListener(this);
         mainPanel.add(player2_username);
 
         startButton = new JButton("Start");
         startButton.setBackground(Color.BLUE);
         startButton.setForeground(Color.WHITE);
-        startButton.setFont(new Font("Arial",Font.BOLD,15));
-        startButton.setBounds(20,250,200,50);
+        startButton.setFont(new Font("Arial", Font.BOLD, 15));
+        startButton.setBounds(20, 250, 200, 50);
         mainPanel.add(startButton);
 
         cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(240,250,200,50);
+        cancelButton.setBounds(240, 250, 200, 50);
         mainPanel.add(cancelButton);
 
         startButton.addActionListener(this);
         cancelButton.addActionListener(this);
-
 
         label.setBounds(500, 25, this.getWidth(), this.getHeight());
         mainPanel.add(label);
@@ -79,40 +76,31 @@ public class UserRegisterPanel extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
-            System.out.println("this is inside the user register functuion");
             try {
                 if (player1_username.getText().trim().isEmpty() || player2_username.getText().trim().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "the field cant be empty", "Error", JOptionPane.ERROR_MESSAGE);
                     throw new Exception("the field cant be empty");
                 }
 
-                if(player1_username.getText().equalsIgnoreCase(player2_username.getText()))
-                {
-                    JOptionPane.showMessageDialog(this, "The username cannot match", "Error", JOptionPane.ERROR_MESSAGE);
+                if (player1_username.getText().equalsIgnoreCase(player2_username.getText())) {
+                    JOptionPane.showMessageDialog(this, "The username cannot match", "Error",
+                            JOptionPane.ERROR_MESSAGE);
                     throw new Exception("The username cannot match");
                 }
                 Main menu = new Main(player1_username.getText(), player2_username.getText());
-                             menu.setVisible(true);
-                             this.dispose();
-            }
-            catch (Exception ex)
-            {
+                menu.setVisible(true);
+                this.dispose();
+            } catch (Exception ex) {
                 System.out.println(ex);
             }
 
-            System.out.println("this is inside the start button");
-
-        }
-        else if(e.getSource()==cancelButton)
-        {
+        } else if (e.getSource() == cancelButton) {
             GameMenu menu = new GameMenu();
             menu.GameMenu();
             this.dispose();
-}
-
+        }
 
     }
 }

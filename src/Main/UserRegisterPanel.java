@@ -18,7 +18,6 @@ public class UserRegisterPanel extends JFrame implements ActionListener {
 
     private JButton cancelButton;
 
-    private JLabel noteLabel;
 
 
     JLabel label = new JLabel();
@@ -32,7 +31,7 @@ public class UserRegisterPanel extends JFrame implements ActionListener {
         JPanel mainPanel = new JPanel();
         mainPanel.setBounds(0, 32, 600, 500);
         mainPanel.setLayout(null);
-        JLabel titleLabel = new JLabel("User Register");
+        JLabel titleLabel = new JLabel("Set UserName");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
         titleLabel.setBounds(150, 20, 400, 50);
         mainPanel.add(titleLabel);
@@ -70,11 +69,6 @@ public class UserRegisterPanel extends JFrame implements ActionListener {
         cancelButton.setBounds(240,250,200,50);
         mainPanel.add(cancelButton);
 
-         noteLabel = new JLabel("Note: If you have register before you can enter previous username... \nelse new user will be created");
-        noteLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        noteLabel.setBounds(20, 350, 550, 50);
-        mainPanel.add(noteLabel);
-
         startButton.addActionListener(this);
         cancelButton.addActionListener(this);
 
@@ -108,72 +102,6 @@ public class UserRegisterPanel extends JFrame implements ActionListener {
             {
                 System.out.println(ex);
             }
-//            Connection dbconn = DBConnection.connectDB();
-//            System.out.println(dbconn);
-//            if(dbconn!=null)
-//            {
-//                try
-//                {
-//                    System.out.println("this is inside try");
-//
-//                    ResultSet rs=null;
-//                    PreparedStatement st = null;
-//                    PreparedStatement st1 = dbconn.prepareStatement("SELECT * FROM user WHERE username = ?");
-//
-//                    st1.setString(1, player1_username.getText());
-//                     rs = st1.executeQuery();
-//                     st1.setString(1,player2_username.getText());
-//                     rs= st1.executeQuery();
-//                     if(rs.next())
-//                     {
-//                         JOptionPane.showMessageDialog(this, "Username is already registered..");
-//                     }
-//                     else {
-//
-//                          st = dbconn.prepareStatement("INSERT INTO user(username) VALUES (?)");
-//                         st.setString(1, player1_username.getText());
-//                         int res = st.executeUpdate();
-//                         st.setString(1, player2_username.getText());
-//                         int res1 = st.executeUpdate();
-//
-//                         System.out.println("this is after set string");
-//                         if (res > 0 && res1> 0) {
-//                             JOptionPane.showMessageDialog(this, "User has been Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
-//                             System.out.println("User has been registered");
-//                             Main menu = new Main(player1_username.getText(), player2_username.getText());
-//                             menu.setVisible(true);
-//                             this.dispose();
-//                         }
-//                         else
-//                         {
-//                             JOptionPane.showMessageDialog(this, "User registration failed","Error",JOptionPane.ERROR_MESSAGE);
-//                             GameMenu menu = new GameMenu();
-//                             menu.GameMenu();
-//                             this.dispose();
-//                         }
-//                     }
-//
-//
-//                    //JOptionPane.showMessageDialog(this, "User has been Registered","Success",JOptionPane.INFORMATION_MESSAGE);
-//
-//
-//                }
-//                catch(Exception ex)
-//                {
-//                    System.out.println(ex);
-//                }
-//                finally{
-//                    try {
-//                        dbconn.close(); // Close the database connection
-//                    } catch (SQLException ex) {
-//                        System.out.println("Error closing database connection: " + ex.getMessage());
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                System.out.println("database here is not connected");
-//            }
 
             System.out.println("this is inside the start button");
 

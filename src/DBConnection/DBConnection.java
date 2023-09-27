@@ -18,8 +18,8 @@ public class DBConnection {
         Connection conn;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("this is connection");
             conn = DriverManager.getConnection(DB_url, username, password);
+            System.out.println("Database connection successfull");
             return conn;
 
         }catch(Exception ex)

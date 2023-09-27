@@ -8,8 +8,8 @@ public class GameStart {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                    GameMenu menu = new GameMenu();
-                    menu.GameMenu();
+                GameMenu menu = new GameMenu();
+                menu.GameMenu();
             }
         });
     }
